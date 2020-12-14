@@ -8,19 +8,19 @@ to win!
 
 Basic file structre:
 
-// main engine
+main engine -
 main.cpp
 main.h
 
-// board
+board - 
 board.cpp
 board.h
 
-// Inventory
+Inventory - 
 inventory.cpp
 inventory.h
 
-// Race
+Race - 
 race.cpp
 race.h
 player.cpp
