@@ -27,11 +27,17 @@ class item{
   inline int getBAttack(){return BonusAttack;};
   inline int getBDefense(){return BonusDefense;};
   inline int getBHP(){return BonusHP;};
+  inline std::string getString(){return name;};
 
   //Prints the stats to the cmd in a Dungeons and Dragons style (oooh yeeeeah best game)
   void printStats();
   
  protected:
+  /////////////////////////////////////////////////////////////////////////////////
+  // Maybe we should not store the coordinates here, as their coordinates will be basically their
+  // location in the board pointer array.
+  // Elea's choice I guess...
+  /////////////////////////////////////////////////////////////////////////////////
   int ItemX;
   int ItemY;
   std::string name;
@@ -39,6 +45,7 @@ class item{
   int BonusAttack;
   int BonusDefense;
   int BonusHP;
+  int BonusStrength;
 };
 
 #endif //end of def guard

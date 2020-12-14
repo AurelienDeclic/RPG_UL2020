@@ -1,5 +1,5 @@
-#ifndef inventory
-#define inventory
+#ifndef inventory_h
+#define inventory_h
 
 
 

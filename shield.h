@@ -7,12 +7,8 @@ class shield : public item{
  public:
   shield(); //creates a random weapon object
   shield(int); //creates an item with certain atributes and a shield ID
-
-  void getStats(); //prints stats to the screen
-  
  private:
-  void setStats(int);
-  //NONE (inherits from item class)
+  void setStats(int);//function called internally to set values
 };
 
 #endif //end of def guard

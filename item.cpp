@@ -1,12 +1,12 @@
 #include <cstdlib>
 #include <iostream>
-
 #include "item.h"
 
 using namespace std;
 
 void item::pickup(){
   //get the item out of the board
+ 
   ItemX = 0;
   ItemY = 0;
 
@@ -19,7 +19,7 @@ void item::drop(){
 }
 
 void item::printStats(){
-  cout << "W" << weight;
+  cout << name << ": W" << weight;
   if(BonusAttack != 0){
     cout << "A" << BonusAttack;
   }
@@ -29,6 +29,7 @@ void item::printStats(){
   if(BonusHP != 0){
     cout << "H" << BonusHP;
   }
+  if(BonusStrength != 0){
+    cout << "S" << BonusStrength;
+  }
 }
-
-using namespace std;
