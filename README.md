@@ -16,9 +16,20 @@ board -
 board.cpp
 board.h
 
-Inventory - 
+Inventory qnd Items- 
 inventory.cpp
 inventory.h
+item.cpp
+item.h
+  inherits from item.h :
+  shield.h
+  shield.cpp
+  weapon.h
+  weapon.cpp
+  armour.h
+  armour.cpp
+  ring.h
+  ring.cpp
 
 Race - 
 race.cpp
