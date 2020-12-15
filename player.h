@@ -6,16 +6,16 @@
 class Player  
 {
  public:
-	void initialiseAttributes(int);
-	void showAttributes();
-	inline void GoldAdd(int GoldAddNum){gold+=GoldAddNum;};
-	int attack(bool isNight);
-	void defence(int &damage, bool isNight);
-	int printGold();
+	void initialiseAttributes(int); //Based on input initialise player character attributes
+	void showAttributes(); //Show player attributes 
+	inline void GoldAdd(int GoldAddNum){gold+=GoldAddNum;}; //Adding gold to player 
+	int attack(bool isNight); //Player attack function
+	void defence(int &damage, bool isNight); //Player defence function
+	int printGold(); //Function to print gold collected
 	//void movePlayer(char direction);
 	//int look();
-	void alterStats(bool isNight);
-	int getPlayerHealth();
+	void alterStats(bool isNight); //Alter player stats based on time of the day
+	int getPlayerHealth(); //Get player health
   
  private:
 	Race playerRace;

@@ -6,28 +6,28 @@
 class Race{
 
     public:
-		void setAttributes(std::string name, int att, int def, int str, int hlt);
-        void showAttributes();
-		std::string getCharacter();
-		int getAttack();
-		int getAttackChance();
-		int getDefence();
-		int getDefenceChance();
-		int getStrength();
-		int getHealth();
-		void setHealth(int hp);
-		void alterStats(int att,int def, bool time);
+		void setAttributes(std::string name, int att, int def, int str, int hlt); //Initialising stats of a character - Player/Enemy
+        void showAttributes(); //Show race attributes
+		std::string getCharacter(); //Function to get Character data.
+		int getAttack(); //Function to get attack value.
+		int getAttackChance(); //Function to get attack chance.
+		int getDefence(); //Function to get defence value.
+		int getDefenceChance(); //Function to get defence chance.
+		int getStrength(); // Function to get strenght value.
+		int getHealth(); //Function to get health value.
+		void setHealth(int hp); //Function to update health based on attack/defence
+		void alterStats(int att,int def, bool time); //Function to alter stats of a race based on time of the day
 		//void updateHealth();
 	
 	protected:
-        std::string character; // human or elf or etc...
+        std::string character; // human or elf etc...
         int attack;
         int attackChance; 
         int defence;
-        int defenceChance;   // similar to attack chance
+        int defenceChance;
         int strength;
         int health;
-		bool isNight; 
+		bool isNight; //Is used to alter race abilities based on time of the day.
 		//int updateStregnth;
 		//int updateHealth;
         
