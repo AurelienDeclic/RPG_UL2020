@@ -7,6 +7,7 @@
 #include "weapon.h"
 #include "armour.h"
 #include "ring.h"
+#include "inventory.h"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ int main(){
   //Part 1: item creation
   //4 types of items, all using different classes
   //all inherits from class "item", which stores default bonus values of item + name
-
+  /*
   srand(time(NULL)); //Rand seed MUST BE INITIALISED BEFORE CREATION
 
   weapon weapon1; //weapon object no 1
@@ -30,8 +31,12 @@ int main(){
   cout << endl;
   ring ring1;
   ring1.printStats();
-  cout << endl;
+  cout << endl;*/
 
+  inventory PlayerInventory;
+  PlayerInventory.printInventory();
+
+  
   //end of Aurelien test code
   return EXIT_SUCCESS;
 }

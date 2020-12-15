@@ -27,6 +27,7 @@ class item{
   inline int getBAttack(){return BonusAttack;};
   inline int getBDefense(){return BonusDefense;};
   inline int getBHP(){return BonusHP;};
+  inline int getBStrength(){return BonusStrength;};
   inline std::string getString(){return name;};
 
   //Prints the stats to the cmd in a Dungeons and Dragons style (oooh yeeeeah best game)

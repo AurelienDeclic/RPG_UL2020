@@ -18,11 +18,19 @@ ring::ring(int ID){ //general constructor
   int NpossibleItems = 2;
   if( 1 <= ID && ID <= NpossibleItems){
   setStats(ID);
-  }else{ setStats(1); }
+  }else{ setStats(0); }
 }
 
 void ring::setStats(int ID){
   switch(ID){
+  case 0://"empty ID" for inventory
+    name = "NONE";
+    weight = 0;
+    BonusAttack = 0;
+    BonusDefense = 0;
+    BonusHP = 0;
+    BonusStrength = 0;
+    break;
   case 1:
     //Sets stats for Ring of life
     name = "Ring of life (ring)";

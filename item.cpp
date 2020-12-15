@@ -19,7 +19,10 @@ void item::drop(){
 }
 
 void item::printStats(){
-  cout << name << ": W" << weight;
+  cout << name << " ";
+  if(weight != 0){
+    cout << "W" << weight;
+  }
   if(BonusAttack != 0){
     cout << "A" << BonusAttack;
   }
