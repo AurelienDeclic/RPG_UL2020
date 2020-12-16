@@ -3,21 +3,10 @@
 #include "item.h"
 
 using namespace std;
-
-void item::pickup(){
-  //get the item out of the board
- 
-  ItemX = 0;
-  ItemY = 0;
-
-  //Add Item to inventory
-}
-
-void item::drop(){
-  //set ItemX and ItemY to current player coordinates
-  //delete item from inventory
-}
-
+/////////////////////////////////////////////////////////////////////
+//Function printStats():
+//Prints the stats of the item object to the cmd (Weight Attack Defense HP Strength)
+////////////////////////////////////////////////////////////////////
 void item::printStats(){
   cout << name << " ";
   if(weight != 0){

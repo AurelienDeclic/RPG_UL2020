@@ -3,6 +3,15 @@
 
 #include "item.h"
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//class name: shield
+//construction: basic (random item, except "EMPTY") and general (with an integer item ID)
+//destruction: NONE
+//Derived from: item class
+//used as inheritance for classes: NONE
+//
+//Description: creates shield objects, and set their statistics following a database (see shield.cpp)
+////////////////////////////////////////////////////////////////////////////////////////////////////
 class shield : public item{
  public:
   shield(); //creates a random weapon object

@@ -4,17 +4,20 @@
 #include <cstdlib>
 #include <string>
 
-/////////////////////////////////////////////////////////////
-//class item
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//class name: inventory
 //construction: NONE
-//Used as derivation in classes weapon armour shield ring
-/////////////////////////////////////////////////////////////
+//destruction: NONE
+//Derived from: NONE
+//used as inheritance for classes: weapon, ring, shield, armour
+//
+//Description: Is used to simplify program writing and set new Item properties in case of update.
+//     The interface can be used to get the bonus values from the item
+//     Stores the name of the item, weight, Bonus Defense, Bonus HP, BonusStrength values.
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class item{
   public:
-  void pickup(); //picks the item up on the currrent player tile
-  void drop(); //drops the item on the current player tile
-
   //Get and Set coordinates functions
   inline int getX(){return ItemX;};
   inline void setX(int &i){ItemX = i;};
