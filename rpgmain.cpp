@@ -2,6 +2,9 @@
 #include <iostream>
 #include "player.h"
 #include "enemy.h"
+#include "weapon.h"
+#include "armour.h"
+#include "ring.h"
 
 using namespace std;
 
@@ -11,7 +14,10 @@ bool ifNight(int cnt);
 int main()
 {
     Player player;
-	Enemy enemyPlayer;
+	Enemy enemyPlayer; //Enemy initialised using constructor
+	armour pArmour;
+	weapon pWeapon;
+	ring pRing;
 	int input; //From console
 	char option; //Attack/Quit/Pickup etc
 	int counter=0; //Counter to check for day and night and alter status, needs to be incremented after every move.
@@ -26,12 +32,11 @@ int main()
 	cin >> input;
 	cout << endl;
 	cout << "Choose of the options: " << endl;
-	cout << "(A) Attack, (X)Exit" << endl;
+	cout << "(A) Attack, (P) Pickup, (D) Drop, (L) Look, (X)Exit" << endl;
 	cin >> option;
 	player.initialiseAttributes(input); //Initialisation the player attributes
 	player.showAttributes(); //Display player attributes
 	cout << "Enemy" << endl;
-	enemyPlayer.initialiseAttributes(); //Initialisation the enemy attributes
 	enemyPlayer.showAttributes(); //Display enenmy attributes
 	//Logic to execute until Exit(X)
 	while(option!='X' || option!='x')
@@ -78,6 +83,59 @@ int main()
 				}	
 			}
 		}
+		else if(option=='P' || option=='p')
+		{
+			//Multiple if criteria based on different types of items. Items to be populated when board is initiated. Assuming flag is set to pick either armour/weapon etc.
+			string itemType1= pWeapon.getString(); // Test logic to see if attack is working after modifying the attributes.
+			string itemType2=pArmour.getString();
+			string itemType3=pRing.getString();
+			string itemType4=pRing.getString();
+			cout << "ItemType1: " << itemType1 << endl;
+			cout << "ItemType2: " << itemType2 << endl;
+			cout << "ItemType3: " << itemType3 << endl;
+			cout << "ItemType4: " << itemType4 << endl;
+			if(itemType2=="Plate Armour (armour)")
+			{
+				player.itemPickup(pArmour);
+			}
+			if(itemType2=="Leather Armour (armour)")
+			{
+				player.itemPickup(pArmour);
+			}
+			if(itemType1=="Sword (weapon)")
+			{
+				player.itemPickup(pWeapon);
+			}
+			if(itemType1=="Dagger (weapon)")
+			{
+				player.itemPickup(pWeapon);
+			}
+			//Similar for shield
+			if(itemType3=="Ring of life (ring)")
+			{
+				player.itemPickup(pRing);
+			}
+			if(itemType3=="Ring of Strength (ring)")
+			{
+				player.itemPickup(pRing);
+			}
+			if(itemType4=="Ring of life (ring)")
+			{
+				player.itemPickup(pRing);
+			}
+			if(itemType4=="Ring of Strength (ring)")
+			{
+				player.itemPickup(pRing);
+			}
+		}
+		else if(option=='D' || option=='d')
+		{
+			player.itemDrop();
+		}
+		else if(option=='L' || option=='l')
+		{
+			player.showCurrentStats();
+		}
 		//If any option other than A,X,P etc is picked then need to exit
 		else{
 			cout<< "Exiting" << endl;
@@ -85,7 +143,7 @@ int main()
 		}
 		//Loop until Exit
 		cout << "Choose of the options: " << endl;
-		cout << "(A) Attack, (X)Exit" << endl;
+		cout << "(A) Attack, (P) Pickup, (D) Drop, (L) Look, (X)Exit" << endl;
 		cin >> option;
 		//Increment counter
 		counter++;
@@ -101,10 +159,12 @@ bool ifNight(int cnt)
 {
 	if(cnt%10==0 || cnt%10==1 || cnt%10==2 || cnt%10==3 || cnt%10==4)
 	{
+		cout << "Its day" << endl;
 		return false;
 	}
 	if(cnt%10==5 || cnt%10==6 || cnt%10==7 || cnt%10==8 || cnt%10==9)
 	{
+		cout << "Its night" << endl;
 		return true;
 	}
 }

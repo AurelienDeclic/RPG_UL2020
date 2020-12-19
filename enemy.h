@@ -6,6 +6,7 @@
 class Enemy  
 {
  public:
+	Enemy(); //Enemy constructor
 	void initialiseAttributes(); //Initialise enemy character attributes
 	void showAttributes(); //Show enemy attributes
 	int attack(bool isNight); //Enemy attack function

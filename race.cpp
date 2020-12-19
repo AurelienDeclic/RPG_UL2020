@@ -6,7 +6,7 @@
 using namespace std;
 
 
-void Race::setAttributes(string name, int att, int def, int str, int hlt)
+void Race::setAttributes(string name, int att, int def, int hlt, int str)
 {
 		character=name;
 		attack=att; 
@@ -115,6 +115,11 @@ int Race::getHealth()
 void Race::setHealth(int hp)
 {
 	health=hp;
+}
+
+void Race::setStrength(int str)
+{
+	strength=str;
 }
 
 void Race::alterStats(int att,int def, bool time)

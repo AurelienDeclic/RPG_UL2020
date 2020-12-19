@@ -1,7 +1,6 @@
 #include <cstdlib>
 #include <iostream>
 #include "player.h"
-#include "race.h"
 #include <string>
 
 using namespace std;
@@ -9,6 +8,7 @@ using namespace std;
 void Player::initialiseAttributes(int input)
 {
 	gold=0;
+	isItemPicked=false;
 	switch(input)
 	{
 		case 1:
@@ -62,7 +62,7 @@ int Player::attack(bool isNight)
 		if(playerRace.getAttackChance()>1)
 		{
 			cout << "Player Attack successful" << endl;
-			damage=playerRace.getAttack();
+			damage=playerRace.getAttack() + playerInventory.getTotAttack();
 		}
 		else
 		{
@@ -73,14 +73,14 @@ int Player::attack(bool isNight)
 	else if(playerRace.getCharacter()=="Elf")
 	{
 		cout << "Player Attack successful" << endl;
-		damage=playerRace.getAttack();
+		damage=playerRace.getAttack() + playerInventory.getTotAttack();
 	}
 	else if(playerRace.getCharacter()=="Dwarf")
 	{
 		if(playerRace.getAttackChance()>1)
 		{
 			cout << "Player Attack successful" << endl;
-			damage=playerRace.getAttack();
+			damage=playerRace.getAttack() + playerInventory.getTotAttack();
 		}
 		else
 		{
@@ -93,7 +93,7 @@ int Player::attack(bool isNight)
 		if(playerRace.getAttackChance()>2)
 		{
 			cout << "Player Attack successful" << endl;
-			damage=playerRace.getAttack();
+			damage=playerRace.getAttack() + playerInventory.getTotAttack();
 		}
 		else
 		{
@@ -106,14 +106,14 @@ int Player::attack(bool isNight)
 		if(isNight)
 		{
 			cout << "Player Attack successful" << endl;
-			damage=playerRace.getAttack();
+			damage=playerRace.getAttack() + playerInventory.getTotAttack();
 		}
 		else
 		{
 			if(playerRace.getAttackChance()>3)
 			{
 				cout << "Player Attack successful" << endl;
-				damage=playerRace.getAttack();
+				damage=playerRace.getAttack() + playerInventory.getTotAttack();
 			}
 			else
 			{
@@ -128,6 +128,15 @@ int Player::attack(bool isNight)
 void Player::defence(int &damage, bool isNight)
 {
 	int hp;
+	int damageTaken;
+	if(playerRace.getDefence() + playerInventory.getTotDef()>=damage)
+	{
+		damageTaken=0;
+	}
+	else
+	{
+		damageTaken = damage - (playerRace.getDefence() + playerInventory.getTotDef());
+	}	
 	if(playerRace.getCharacter()=="Human")
 	{
 		if(playerRace.getDefenceChance()>1)
@@ -137,7 +146,8 @@ void Player::defence(int &damage, bool isNight)
 		else
 		{
 			cout << "Player Defence failed" << endl;
-			hp = playerRace.getHealth() + playerRace.getDefence() - damage;
+			cout << "Player damage taken " << damageTaken << endl;
+			hp = playerRace.getHealth() - damageTaken;
 			playerRace.setHealth(hp);
 		}			
 	}
@@ -153,7 +163,8 @@ void Player::defence(int &damage, bool isNight)
 		else
 		{
 			cout << "Player Defence failed" << endl;
-			hp = playerRace.getHealth() + playerRace.getDefence() - damage;
+			cout << "Player damage taken " << damageTaken << endl;
+			hp = playerRace.getHealth() - damageTaken;
 			playerRace.setHealth(hp);
 		}
 	}
@@ -166,7 +177,8 @@ void Player::defence(int &damage, bool isNight)
 		else
 		{
 			cout << "Player Defence failed" << endl;
-			hp = playerRace.getHealth() + playerRace.getDefence() - damage;
+			cout << "Player damage taken " << damageTaken << endl;
+			hp = playerRace.getHealth() - damageTaken;
 			playerRace.setHealth(hp);
 		}
 	}
@@ -174,15 +186,16 @@ void Player::defence(int &damage, bool isNight)
 	{
 		if(playerRace.getDefenceChance()>1)
 		{
-			int randomDamage=rand()%6;
-			cout << "Player Defence successful, however " << randomDamage << " damage is caused" << endl;
-			hp = playerRace.getHealth() - randomDamage;
+			damageTaken=rand()%6;
+			cout << "Player Defence successful, however " << damageTaken << " damage is caused" << endl;
+			hp = playerRace.getHealth() - damageTaken;
 			playerRace.setHealth(hp);
 		}
 		else
 		{
 			cout << "Player Defence failed" << endl;
-			hp = playerRace.getHealth() + playerRace.getDefence() - damage;
+			cout << "Player damage taken " << damageTaken << endl;
+			hp = playerRace.getHealth() - damageTaken;
 			playerRace.setHealth(hp);
 		}
 	}
@@ -199,7 +212,8 @@ void Player::defence(int &damage, bool isNight)
 			else
 			{
 				cout << "Player Defence failed" << endl;
-				hp = playerRace.getHealth() + playerRace.getDefence() - damage;
+				cout << "Player damage taken " << damageTaken << endl;
+				hp = playerRace.getHealth() - damageTaken;
 				playerRace.setHealth(hp);
 			}
 		}
@@ -207,12 +221,16 @@ void Player::defence(int &damage, bool isNight)
 		{
 			if(playerRace.getDefenceChance()>3)
 			{
-				cout << "Player Defence successful no damage taken" << endl;
+				cout << "Player Defence successful" << endl;
+				cout << "However, Player damage taken " << damageTaken/4 << endl;
+				hp = playerRace.getHealth() - (damageTaken)/4;
+				playerRace.setHealth(hp);
 			}
 			else
 			{
 				cout << "Player Defence failed" << endl;
-				hp = playerRace.getHealth() + (playerRace.getDefence() - damage)/4;
+				cout << "Player damage taken " << damageTaken << endl;
+				hp = playerRace.getHealth() - damageTaken;
 				playerRace.setHealth(hp);
 			}
 		}	
@@ -227,4 +245,62 @@ int Player::getPlayerHealth()
 int Player::printGold()
 {
 	return gold;
+}
+
+void Player::itemPickup(armour eqArmour)
+{
+	playerInventory.pickup(eqArmour);
+	int str;
+	str = playerRace.getStrength() - eqArmour.getWeight();
+	playerRace.setStrength(str);
+}
+
+void Player::itemPickup(weapon eqWeapon)
+{
+	playerInventory.pickup(eqWeapon);
+	int str;
+	str = playerRace.getStrength() - eqWeapon.getWeight();
+	playerRace.setStrength(str);
+}
+
+void Player::itemPickup(shield eqShield)
+{
+	playerInventory.pickup(eqShield);
+	int str;
+	str = playerRace.getStrength() - eqShield.getWeight();
+	playerRace.setStrength(str);
+}
+
+void Player::itemPickup(ring eqRing)
+{
+	playerInventory.pickup(eqRing);
+	int hp;
+	hp = playerRace.getHealth() + eqRing.getBHP();
+	playerRace.setHealth(hp);
+	int str;
+	str = playerRace.getStrength() + eqRing.getBStrength() - eqRing.getWeight();
+	playerRace.setStrength(str);
+	
+}
+
+void Player::itemDrop()
+{
+	//Incomplete coz player needs to know the inventory dropped to set the new value of str and health (add or subtract).
+	playerInventory.drop();
+	//int str;
+	//str = playerRace.getStrength() +/- Strength;
+	//playerRace.setStrength(str);
+	//Need to know if the item dropped is ring to resetHealth
+	//int hp= playerRace.getHealth() +/- HP;
+	//playerRace.setHealth(hp);
+	
+}
+
+void Player::showCurrentStats()
+{
+	cout << "You picked race as " << playerRace.getCharacter() << endl;
+	cout << "Current Attack damage: " << playerRace.getAttack() + playerInventory.getTotAttack() << endl;
+	cout << "Current Defence: " << playerRace.getDefence() + playerInventory.getTotDef() << endl;
+	cout << "Current Strength: " << playerRace.getStrength() << endl;
+	cout << "Current Health: " << playerRace.getHealth() << endl;
 }

@@ -6,15 +6,11 @@ Choose a character, from human to Gargoyle
 and fight to collect gold. Collect all gold
 to win!
 
-Basic file structre:
+Basic file structre contains:
 
 main engine -
-main.cpp
-main.h
+rpgmain.cpp
 
-board - 
-board.cpp
-board.h
 
 Inventory - 
 inventory.cpp
@@ -23,5 +19,15 @@ inventory.h
 Race - 
 race.cpp
 race.h
+
+Player - //Pending movement and drop
 player.cpp
+player.h 
+
+Enemy -
 enemy.cpp
+enemy.h
+
+Items and its derived classes.
+
+Makefile

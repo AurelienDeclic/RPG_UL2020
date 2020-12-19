@@ -6,6 +6,11 @@
 
 using namespace std;
 
+
+Enemy::Enemy(){
+  initialiseAttributes();
+}
+
 void Enemy::initialiseAttributes()
 {
 	srand(time(NULL));
@@ -127,6 +132,15 @@ int Enemy::attack(bool isNight)
 void Enemy::defence(int &damage, bool isNight)
 {
 	int hp;
+	int damageTaken;
+	if(enemyRace.getDefence()>=damage)
+	{
+		damageTaken=0;
+	}
+	else
+	{
+		damageTaken = damage - enemyRace.getDefence();
+	}
 	if(enemyRace.getCharacter()=="Human")
 	{
 		if(enemyRace.getDefenceChance()>1)
@@ -136,7 +150,8 @@ void Enemy::defence(int &damage, bool isNight)
 		else
 		{
 			cout << "Enemy Defence failed" << endl;
-			hp = enemyRace.getHealth() + enemyRace.getDefence() - damage;
+			cout << "Enemy damage taken " << damageTaken << endl;
+			hp = enemyRace.getHealth() - damageTaken;
 			enemyRace.setHealth(hp);
 		}			
 	}
@@ -152,7 +167,8 @@ void Enemy::defence(int &damage, bool isNight)
 		else
 		{
 			cout << "Enemy Defence failed" << endl;
-			hp = enemyRace.getHealth() + enemyRace.getDefence() - damage;
+			cout << "Enemy damage taken " << damageTaken << endl;
+			hp = enemyRace.getHealth() - damageTaken;
 			enemyRace.setHealth(hp);
 		}
 	}
@@ -165,7 +181,8 @@ void Enemy::defence(int &damage, bool isNight)
 		else
 		{
 			cout << "Enemy Defence failed" << endl;
-			hp = enemyRace.getHealth() + enemyRace.getDefence() - damage;
+			cout << "Enemy damage taken " << damageTaken << endl;
+			hp = enemyRace.getHealth() - damageTaken;
 			enemyRace.setHealth(hp);
 		}
 	}
@@ -173,15 +190,16 @@ void Enemy::defence(int &damage, bool isNight)
 	{
 		if(enemyRace.getDefenceChance()>1)
 		{
-			int randomDamage=rand()%6;
-			cout << "Enemy Defence successful, however " << randomDamage << " damage is caused" << endl;
-			hp = enemyRace.getHealth() - randomDamage;
+			damageTaken=rand()%6;
+			cout << "Enemy Defence successful, however " << damageTaken << " damage is caused" << endl;
+			hp = enemyRace.getHealth() - damageTaken;
 			enemyRace.setHealth(hp);
 		}
 		else
 		{
 			cout << "Enemy Defence failed" << endl;
-			hp = enemyRace.getHealth() + enemyRace.getDefence() - damage;
+			cout << "Enemy damage taken " << damageTaken << endl;
+			hp = enemyRace.getHealth() - damageTaken;
 			enemyRace.setHealth(hp);
 		}
 	}
@@ -198,7 +216,8 @@ void Enemy::defence(int &damage, bool isNight)
 			else
 			{
 				cout << "Enemy Defence failed" << endl;
-				hp = enemyRace.getHealth() + enemyRace.getDefence() - damage;
+				cout << "Enemy damage taken " << damageTaken << endl;
+				hp = enemyRace.getHealth() - damageTaken;
 				enemyRace.setHealth(hp);
 			}
 		}
@@ -206,12 +225,16 @@ void Enemy::defence(int &damage, bool isNight)
 		{
 			if(enemyRace.getDefenceChance()>3)
 			{
-				cout << "Enemy Defence successful no damage taken" << endl;
+				cout << "Enemy Defence successful" << endl;
+				cout << "However, enemy damage taken " << damageTaken/4 << endl;
+				hp = enemyRace.getHealth() - (damageTaken)/4;
+				enemyRace.setHealth(hp);
 			}
 			else
 			{
 				cout << "Enemy Defence failed" << endl;
-				hp = enemyRace.getHealth() + (enemyRace.getDefence() - damage)/4;
+				cout << "Enemy damage taken " << damageTaken << endl;
+				hp = enemyRace.getHealth() - damageTaken;
 				enemyRace.setHealth(hp);
 			}
 		}	
