@@ -368,8 +368,6 @@ void Player::itemDrop()
  */
 void Player::showCurrentStats()
 {
-	cout << "Race attri " << playerRace.getAttack() << endl;
-	cout << "Player attri " << playerInventory.getTotAttack() << endl;
 	cout << "You picked race as " << playerRace.getCharacter() << endl;
 	cout << "Current Player Attack damage: " << playerRace.getAttack() + playerInventory.getTotAttack() << endl;
 	cout << "Current Player Defence: " << playerRace.getDefence() + playerInventory.getTotDef() << endl;
