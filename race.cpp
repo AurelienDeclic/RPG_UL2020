@@ -23,6 +23,7 @@ using namespace std;
  */
 void Race::setAttributes(int input)
 {
+	//Based on the input chosen in the console, player race is assigned.
 	switch(input)
 	{
 		case 1:
@@ -83,6 +84,7 @@ void Race::showAttributes()
 int Race::getAttackChance()
 {
 	srand(static_cast<unsigned int>(time(NULL)));
+	//Value returned here will be checked during attack to know if the probability of attack passed or failed.
 	if(character=="Human")
 	{
 		return rand()%3+1;
@@ -122,6 +124,7 @@ int Race::getAttackChance()
 int Race::getDefenceChance()
 {
 	srand(static_cast<unsigned int>(time(NULL)));
+	//Value returned here will be checked during defence to know if the probability of defence passed or failed.
 	if(character=="Human")
 	{
 		return rand()%2+1;
@@ -172,6 +175,7 @@ void Race::setHealth(int hp)
 void Race::alterStats(bool time)
 {
 	isNight=time;
+	//Based on day/night alter race attributes, currently only for Orc
 	if(isNight)
 	{
 		if(character=="Orc")

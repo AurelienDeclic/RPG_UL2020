@@ -5,6 +5,7 @@
 #include "weapon.h"
 #include "armour.h"
 #include "ring.h"
+#include "board.h"
 
 using namespace std;
 
@@ -13,6 +14,8 @@ bool ifNight(int cnt);
 
 int main()
 {
+	srand(time(NULL));
+	board boardB(5);
     Player player;
 	Enemy enemyPlayer; //Enemy initialised using constructor
 	armour pArmour;

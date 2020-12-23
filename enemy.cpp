@@ -44,6 +44,7 @@ void Enemy::initialiseAttributes()
 {
 	int input;
 	srand(static_cast<unsigned int>(time(NULL)));
+	//Initialise random enemies for the board
 	input=rand()%5+1;
 	enemyRace.setAttributes(input);
 }
@@ -81,7 +82,7 @@ int Enemy::attack(bool isNight)
 	int damage;
 	if(enemyRace.getCharacter()=="Human")
 	{
-		if(enemyRace.getAttackChance()>1)
+		if(enemyRace.getAttackChance()>1) //Attack chance - 2/3
 		{
 			cout << "Enemy Attack successful" << endl;
 			damage=enemyRace.getAttack();
@@ -94,12 +95,12 @@ int Enemy::attack(bool isNight)
 	}
 	else if(enemyRace.getCharacter()=="Elf")
 	{
-		cout << "Enemy Attack successful" << endl;
+		cout << "Enemy Attack successful" << endl; //Attack chance always successful 1/1
 		damage=enemyRace.getAttack();
 	}
 	else if(enemyRace.getCharacter()=="Dwarf")
 	{
-		if(enemyRace.getAttackChance()>1)
+		if(enemyRace.getAttackChance()>1) // Attack chance - 2/3
 		{
 			cout << "Enemy Attack successful" << endl;
 			damage=enemyRace.getAttack();
@@ -112,7 +113,7 @@ int Enemy::attack(bool isNight)
 	}
 	else if(enemyRace.getCharacter()=="Hobbit")
 	{
-		if(enemyRace.getAttackChance()>2)
+		if(enemyRace.getAttackChance()>2) // Attack chance - 1/3
 		{
 			cout << "Enemy Attack successful" << endl;
 			damage=enemyRace.getAttack();
@@ -127,12 +128,12 @@ int Enemy::attack(bool isNight)
 	{
 		if(isNight)
 		{
-			cout << "Enemy Attack successful" << endl;
+			cout << "Enemy Attack successful" << endl; //Attack chance always successful in the night 1/1
 			damage=enemyRace.getAttack();
 		}
 		else
 		{
-			if(enemyRace.getAttackChance()>3)
+			if(enemyRace.getAttackChance()>3) // Attack chance - 1/4 in the day
 			{
 				cout << "Enemy Attack successful" << endl;
 				damage=enemyRace.getAttack();
@@ -156,8 +157,7 @@ int Enemy::attack(bool isNight)
 void Enemy::defence(int &damage, bool isNight)
 {
 	int hp;
-	int damageTaken;
-	if(enemyRace.getDefence()>=damage)
+	if(enemyRace.getDefence()>=damage) //If enemy defence > enemy attack damage
 	{
 		damageTaken=0;
 	}
@@ -167,7 +167,7 @@ void Enemy::defence(int &damage, bool isNight)
 	}
 	if(enemyRace.getCharacter()=="Human")
 	{
-		if(enemyRace.getDefenceChance()>1)
+		if(enemyRace.getDefenceChance()>1) //Defence chance 1/2
 		{
 			cout << "Enemy Defence successful no damage taken" << endl;
 		}
@@ -181,7 +181,7 @@ void Enemy::defence(int &damage, bool isNight)
 	}
 	else if(enemyRace.getCharacter()=="Elf")
 	{
-		if(enemyRace.getDefenceChance()>3)
+		if(enemyRace.getDefenceChance()>3) //Defence chance 1/4
 		{
 			cout << "Enemy Defence successful, health increased by 1" << endl;
 			hp = enemyRace.getHealth()+1;
@@ -198,7 +198,7 @@ void Enemy::defence(int &damage, bool isNight)
 	}
 	else if(enemyRace.getCharacter()=="Dwarf")
 	{
-		if(enemyRace.getDefenceChance()>1)
+		if(enemyRace.getDefenceChance()>1) //Defence chance 2/3
 		{
 			cout << "Enemy Defence successful no damage taken" << endl;
 		}
@@ -212,9 +212,9 @@ void Enemy::defence(int &damage, bool isNight)
 	}
 	else if(enemyRace.getCharacter()=="Hobbit")
 	{
-		if(enemyRace.getDefenceChance()>1)
+		if(enemyRace.getDefenceChance()>1) //Defence chance 2/3
 		{
-			damageTaken=rand()%6;
+			damageTaken=rand()%6; //Successful defense, hobbit takes random damage 1-5
 			cout << "Enemy Defence successful, however " << damageTaken << " damage is caused" << endl;
 			hp = enemyRace.getHealth() - damageTaken;
 			enemyRace.setHealth(hp);
@@ -229,9 +229,9 @@ void Enemy::defence(int &damage, bool isNight)
 	}
 	else if(enemyRace.getCharacter()=="Orc")
 	{
-		if(isNight)
+		if(isNight) //If its night
 		{
-			if(enemyRace.getDefenceChance()>1)
+			if(enemyRace.getDefenceChance()>1) //Defence chance 1/2 at night
 			{
 				cout << "Enemy Defence successful, health increased by 1" << endl;
 				hp = enemyRace.getHealth() + 1;
@@ -247,7 +247,7 @@ void Enemy::defence(int &damage, bool isNight)
 		}
 		else
 		{
-			if(enemyRace.getDefenceChance()>3)
+			if(enemyRace.getDefenceChance()>3) //Defence chance 1/4 at day
 			{
 				cout << "Enemy Defence successful" << endl;
 				cout << "However, enemy damage taken " << damageTaken/4 << endl;

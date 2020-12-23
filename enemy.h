@@ -26,7 +26,9 @@ class Enemy
 		void showCurrentStats(); //Displays enemy current attributes
   
 	private:
-		Race enemyRace;
+		Race enemyRace; //Enemy Race
+		int damageTaken; //DamageTaken by enemy
+		//int enemyHP;
 };
 
 #endif

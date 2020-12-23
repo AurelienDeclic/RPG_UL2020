@@ -23,12 +23,12 @@ using namespace std;
  */
 void Player::initialiseAttributes(int input)
 {
-	gold=0;
-	playerRace.setAttributes(input);
-	PlayerSTR=playerRace.getStrength(); //Initialising player strength to race strength
-	PlayerHP=playerRace.getHealth(); //Initialising player health to race health
-	Xcoord = 200/2; //sets starting coordinates at the middle of the board
-    Ycoord = 200/2;
+	gold=0; //Initial value set to zero
+	playerRace.setAttributes(input); //Setting race attributes
+	playerSTR=playerRace.getStrength(); //Initialising player strength to race strength
+	playerHP=playerRace.getHealth(); //Initialising player health to race health
+	xCoord = 200/2; //sets starting coordinates at the middle of the board
+    yCoord = 200/2; //sets starting coordinates at the middle of the board
 }
 
 /*
@@ -39,7 +39,7 @@ void Player::initialiseAttributes(int input)
  */
 void Player::showInitAttributes()
 {
-	playerRace.showAttributes();
+	playerRace.showAttributes(); //Show player initial attributes
 }
 
 /*
@@ -50,7 +50,7 @@ void Player::showInitAttributes()
  */
 void Player::alterStats(bool isNight)
 {
-	playerRace.alterStats(isNight);
+	playerRace.alterStats(isNight); //Alter race stats
 }
 
 /*
@@ -61,10 +61,10 @@ void Player::alterStats(bool isNight)
  */
 int Player::attack(bool isNight)
 {
-	int damage;
+	int damage; //Damage caused during attack
 	if(playerRace.getCharacter()=="Human")
 	{
-		if(playerRace.getAttackChance()>1)
+		if(playerRace.getAttackChance()>1) //Attack chance - 2/3
 		{
 			cout << "Player Attack successful" << endl;
 			damage=playerRace.getAttack() + playerInventory.getTotAttack();
@@ -77,12 +77,12 @@ int Player::attack(bool isNight)
 	}
 	else if(playerRace.getCharacter()=="Elf")
 	{
-		cout << "Player Attack successful" << endl;
+		cout << "Player Attack successful" << endl; //Attack chance always successful 1/1
 		damage=playerRace.getAttack() + playerInventory.getTotAttack();
 	}
 	else if(playerRace.getCharacter()=="Dwarf")
 	{
-		if(playerRace.getAttackChance()>1)
+		if(playerRace.getAttackChance()>1) // Attack chance - 2/3
 		{
 			cout << "Player Attack successful" << endl;
 			damage=playerRace.getAttack() + playerInventory.getTotAttack();
@@ -93,9 +93,9 @@ int Player::attack(bool isNight)
 			damage =0;
 		}			
 	}
-	else if(playerRace.getCharacter()=="Hobbit")
+	else if(playerRace.getCharacter()=="Hobbit") 
 	{
-		if(playerRace.getAttackChance()>2)
+		if(playerRace.getAttackChance()>2) // Attack chance - 1/3
 		{
 			cout << "Player Attack successful" << endl;
 			damage=playerRace.getAttack() + playerInventory.getTotAttack();
@@ -108,14 +108,14 @@ int Player::attack(bool isNight)
 	}
 	else if(playerRace.getCharacter()=="Orc")
 	{
-		if(isNight)
+		if(isNight) //If its night
 		{
-			cout << "Player Attack successful" << endl;
+			cout << "Player Attack successful" << endl; //Attack chance always successful in the night 1/1
 			damage=playerRace.getAttack() + playerInventory.getTotAttack();
 		}
 		else
 		{
-			if(playerRace.getAttackChance()>3)
+			if(playerRace.getAttackChance()>3) // Attack chance - 1/4 in the day
 			{
 				cout << "Player Attack successful" << endl;
 				damage=playerRace.getAttack() + playerInventory.getTotAttack();
@@ -138,7 +138,7 @@ int Player::attack(bool isNight)
  */
 void Player::defence(int &damage, bool isNight)
 {
-	if(playerRace.getDefence() + playerInventory.getTotDef()>=damage)
+	if(playerRace.getDefence() + playerInventory.getTotDef()>=damage) //If players defence > enemy attack damage
 	{
 		damageTaken=0;
 	}
@@ -148,7 +148,7 @@ void Player::defence(int &damage, bool isNight)
 	}	
 	if(playerRace.getCharacter()=="Human")
 	{
-		if(playerRace.getDefenceChance()>1)
+		if(playerRace.getDefenceChance()>1) //Defence chance 1/2
 		{
 			cout << "Player Defence successful no damage taken" << endl;
 		}
@@ -156,26 +156,26 @@ void Player::defence(int &damage, bool isNight)
 		{
 			cout << "Player Defence failed" << endl;
 			cout << "Player damage taken " << damageTaken << endl;
-			PlayerHP -= damageTaken;
+			playerHP -= damageTaken;
 		}			
 	}
 	else if(playerRace.getCharacter()=="Elf")
 	{
-		if(playerRace.getDefenceChance()>3)
+		if(playerRace.getDefenceChance()>3) //Defence chance 1/4
 		{
 			cout << "Player Defence successful, health increased by 1" << endl;
-			PlayerHP += 1;
+			playerHP += 1;
 		}
 		else
 		{
 			cout << "Player Defence failed" << endl;
 			cout << "Player damage taken " << damageTaken << endl;
-			PlayerHP -= damageTaken;
+			playerHP -= damageTaken;
 		}
 	}
 	else if(playerRace.getCharacter()=="Dwarf")
 	{
-		if(playerRace.getDefenceChance()>1)
+		if(playerRace.getDefenceChance()>1) //Defence chance 2/3
 		{
 			cout << "Player Defence successful no damage taken" << endl;
 		}
@@ -183,53 +183,53 @@ void Player::defence(int &damage, bool isNight)
 		{
 			cout << "Player Defence failed" << endl;
 			cout << "Player damage taken " << damageTaken << endl;
-			PlayerHP -= damageTaken;
+			playerHP -= damageTaken;
 		}
 	}
 	else if(playerRace.getCharacter()=="Hobbit")
 	{
-		if(playerRace.getDefenceChance()>1)
+		if(playerRace.getDefenceChance()>1) //Defence chance 2/3
 		{
-			damageTaken=rand()%6;
+			damageTaken=rand()%6; //Successful defense, hobbit takes random damage 1-5
 			cout << "Player Defence successful, however " << damageTaken << " damage is caused" << endl;
-			PlayerHP -= damageTaken;
+			playerHP -= damageTaken;
 		}
 		else
 		{
 			cout << "Player Defence failed" << endl;
 			cout << "Player damage taken " << damageTaken << endl;
-			PlayerHP -= damageTaken;
+			playerHP -= damageTaken;
 		}
 	}
 	else if(playerRace.getCharacter()=="Orc")
 	{
-		if(isNight)
+		if(isNight) //If its night
 		{
-			if(playerRace.getDefenceChance()>1)
+			if(playerRace.getDefenceChance()>1) //Defence chance 1/2 at night
 			{
 				cout << "Player Defence successful, health increased by 1" << endl;
-				PlayerHP += 1;
+				playerHP += 1;
 			}
 			else
 			{
 				cout << "Player Defence failed" << endl;
 				cout << "Player damage taken " << damageTaken << endl;
-				PlayerHP -= damageTaken;
+				playerHP -= damageTaken;
 			}
 		}
 		else
 		{
-			if(playerRace.getDefenceChance()>3)
+			if(playerRace.getDefenceChance()>3) //Defence chance 1/4 at day
 			{
 				cout << "Player Defence successful" << endl;
 				cout << "However, Player damage taken " << damageTaken/4 << endl;
-				PlayerHP = PlayerHP - (damageTaken)/4;
+				playerHP = playerHP - (damageTaken)/4;
 			}
 			else
 			{
 				cout << "Player Defence failed" << endl;
 				cout << "Player damage taken " << damageTaken << endl;
-				PlayerHP -= damageTaken;
+				playerHP -= damageTaken;
 			}
 		}	
 	}
@@ -243,7 +243,7 @@ void Player::defence(int &damage, bool isNight)
  */
 int Player::getPlayerHealth()
 {
-	return PlayerHP;
+	return playerHP;
 }
 
 /*
@@ -254,7 +254,7 @@ int Player::getPlayerHealth()
  */
 void Player::itemPickup(armour eqArmour)
 {
-	//Logic to check if similar inventory is picked and if strength > eq weight
+	//Logic to check if similar inventory is picked prior and if strength > eq weight
 	if(((playerInventory.getArmor()).getString())=="NONE")
 	{
 		if(getPlayerSTR() >= eqArmour.getWeight())
@@ -281,7 +281,7 @@ void Player::itemPickup(armour eqArmour)
  */
 void Player::itemPickup(weapon eqWeapon)
 {
-	//Logic to check if similar inventory is picked and if strength > eq weight
+	//Logic to check if similar inventory is picked prior and if strength > eq weight
 	if(((playerInventory.getWeapon()).getString())=="NONE")
 	{
 		if(getPlayerSTR() >= eqWeapon.getWeight())
@@ -308,7 +308,7 @@ void Player::itemPickup(weapon eqWeapon)
  */
 void Player::itemPickup(shield eqShield)
 {
-	//Logic to check if similar inventory is picked and if strength > eq weight
+	//Logic to check if similar inventory is picked prior and if strength > eq weight
 	if(((playerInventory.getShield()).getString())=="NONE")
 	{
 		if(getPlayerSTR() >= eqShield.getWeight())
@@ -355,7 +355,7 @@ void Player::itemPickup(ring eqRing)
  */
 void Player::itemDrop()
 {
-	//Incomplete coz player needs to know the inventory dropped to set the new value of str and health (add or subtract).
+	//Drop item and update player attributes
 	playerInventory.drop();
 	updateStats();
 }
@@ -372,27 +372,27 @@ void Player::showCurrentStats()
 	cout << "Current Player Attack damage: " << playerRace.getAttack() + playerInventory.getTotAttack() << endl;
 	cout << "Current Player Defence: " << playerRace.getDefence() + playerInventory.getTotDef() << endl;
 	cout << "Current Player Strength utilised: " << playerInventory.getTotWeight() <<"/"<< getPlayerSTR() << endl;
-	cout << "Current Player Health: " << getPlayerHP() << endl;
-	cout << "Current Player Co-ordinates: [" << Ycoord << "][" << Xcoord << "]" << endl;
+	cout << "Current Player Health: " << playerHP << endl;
+	cout << "Current Player Co-ordinates: [" << yCoord << "][" << xCoord << "]" << endl;
 }
 
 /*
  * Method name: updateStats
- * Description: Method to update player attributes.	
+ * Description: Method to update player strength and health attributes based on item picked or dropped.	
  * Parameters: None
  * Return: None
  */
 void Player::updateStats()
 {
-	PlayerSTR=playerRace.getStrength()+playerInventory.getTotStrength();
-	PlayerHP=playerRace.getHealth()+playerInventory.getTotHP();
+	playerSTR=playerRace.getStrength()+playerInventory.getTotStrength();
+	playerHP=playerRace.getHealth()+playerInventory.getTotHP();
 }
 
 /*
- *method movePlayer
- *input: integer   1:NORTH - 2:WEST - 3:SOUTH - 4:EAST
- *description: changes the players coordinate in function of input
- *output: none, modifies Xcoord and Ycoord value of player object
+ *Method name: movePlayer
+ *Description: changes the players coordinate
+ *Parameters: character  N/n:NORTH - W/w:WEST - S/s:SOUTH - E/e:EAST
+ *Return: None
  */
 void Player::movePlayer(char Direction)
 {
@@ -400,9 +400,9 @@ void Player::movePlayer(char Direction)
   {
     case 'n'://Moves the player to the north
     case 'N':
-      if(Ycoord+1 < 200-1)
-	  { //if we don't go out of bounds ---------------
-		Ycoord++;
+      if((yCoord+1) < 200-1) //to ensure we are inside the board
+	  { 
+		yCoord++;
       }
 	  else
 	  {
@@ -411,9 +411,9 @@ void Player::movePlayer(char Direction)
     break;
     case 'w': //Moves the player to the west
     case 'W':
-      if((Xcoord-1) > 0)
+      if((xCoord-1) > 0)
 	  {
-		Xcoord--;
+		xCoord--;
       }
 	  else
 	  {
@@ -422,9 +422,9 @@ void Player::movePlayer(char Direction)
     break;
     case 's': //Moves the player to the south
     case 'S':
-      if((Ycoord-1) > 0)
+      if((yCoord-1) > 0)
 	  {
-		Ycoord--;
+		yCoord--;
       }
 	  else
 	  {
@@ -433,9 +433,9 @@ void Player::movePlayer(char Direction)
     break;
     case 'e': //Moves the player to the East
     case 'E':
-      if((Xcoord+1) < 200-1)
+      if((xCoord+1) < 200-1)
 	  {
-		Xcoord++;
+		xCoord++;
       }
 	  else
 	  {
