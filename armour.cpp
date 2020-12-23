@@ -11,7 +11,7 @@ using namespace std;
 /////////////////////////////////////////////////////////
 armour::armour(){
   int NPossibleItems = 2;
-  srand(time(NULL));
+  srand(static_cast<unsigned int>(time(NULL)));
   setStats(rand() % NPossibleItems +1);
 }
 

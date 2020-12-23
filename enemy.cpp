@@ -43,7 +43,7 @@ Enemy::~Enemy(){
 void Enemy::initialiseAttributes()
 {
 	int input;
-	srand(time(NULL));
+	srand(static_cast<unsigned int>(time(NULL)));
 	input=rand()%5+1;
 	enemyRace.setAttributes(input);
 }

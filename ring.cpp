@@ -12,7 +12,7 @@ using namespace std;
 /////////////////////////////////////////////////////////
 ring::ring(){
   int NPossibleItems = 2; //Max possible items (2 rings are possible here)
-  srand(time(NULL)); //initialise seed of rand() with current time
+  srand(static_cast<unsigned int>(time(NULL))); //initialise seed of rand() with current time
   setStats(rand() % NPossibleItems +1); //calls setStats function with the random number
 }
 

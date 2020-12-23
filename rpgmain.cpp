@@ -167,4 +167,5 @@ bool ifNight(int cnt)
 		cout << "Its night" << endl;
 		return true;
 	}
+	return false;
 }

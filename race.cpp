@@ -82,7 +82,7 @@ void Race::showAttributes()
  */
 int Race::getAttackChance()
 {
-	srand(time(NULL));
+	srand(static_cast<unsigned int>(time(NULL)));
 	if(character=="Human")
 	{
 		return rand()%3+1;
@@ -110,6 +110,7 @@ int Race::getAttackChance()
 			return rand()%4+1;
 		}
 	}
+	return 0;
 }
 
 /*
@@ -120,7 +121,7 @@ int Race::getAttackChance()
  */
 int Race::getDefenceChance()
 {
-	srand(time(NULL));
+	srand(static_cast<unsigned int>(time(NULL)));
 	if(character=="Human")
 	{
 		return rand()%2+1;
@@ -148,6 +149,7 @@ int Race::getDefenceChance()
 			return rand()%4+1;
 		}
 	}
+	return 0;
 }
 
 /*
