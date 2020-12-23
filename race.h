@@ -9,8 +9,8 @@
 #ifndef RACE_H
 #define RACE_H
 
-class Race{
-
+class Race
+{
     public:
 		void setAttributes(int input); //Initialising stats of a character - Player/Enemy
         void showAttributes(); //Show race attributes
@@ -25,7 +25,7 @@ class Race{
 		void setStrength(int str); //Function to update strength based on Inventory
 		void alterStats(bool time); //Function to alter stats of a race based on the time (day/night)
 	
-	protected:
+	private:
         std::string character; // human or elf etc...
         int attack;
         int attackChance; 

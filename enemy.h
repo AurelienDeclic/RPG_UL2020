@@ -13,19 +13,20 @@
 
 class Enemy  
 {
- public:
-	Enemy(); //Enemy constructor
-	~Enemy(); //Enemy destructor 
-	void initialiseAttributes(); //Initialise enemy character attributes
-	void showAttributes(); //Show enemy attributes
-	int attack(bool isNight); //Enemy attack function
-	void defence(int &damage, bool isNight); //Enemy defence function
-	int getEnemyHealth(); //Function to get Enemy health
-	int getDefenceValue(); //Function to get enemy defence value which gets added to player gold.
-	void alterStats(bool isNight); //Function to alter enemy race stats based on time of the day.
+	public:
+		Enemy(); //Enemy constructor
+		~Enemy(); //Enemy destructor 
+		void initialiseAttributes(); //Initialise enemy character attributes
+		void showAttributes(); //Show enemy initial attributes
+		int attack(bool isNight); //Enemy attack function
+		void defence(int &damage, bool isNight); //Enemy defence function
+		int getEnemyHealth(); //Function to get Enemy health
+		int getDefenceValue(); //Function to get enemy defence value which gets added to player gold.
+		void alterStats(bool isNight); //Function to alter enemy race stats based on time of the day.
+		void showCurrentStats(); //Displays enemy current attributes
   
- private:
-	Race enemyRace;
+	private:
+		Race enemyRace;
 };
 
 #endif

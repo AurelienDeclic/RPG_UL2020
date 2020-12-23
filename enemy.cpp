@@ -286,3 +286,18 @@ int Enemy::getDefenceValue()
 {
 	return enemyRace.getDefence();
 }
+
+/*
+ * Method name: showCurrentStats
+ * Description: Method to display enemey current status.	
+ * Parameters: None
+ * Return: None
+ */
+void Enemy::showCurrentStats()
+{
+	cout << "The enemey race is " << enemyRace.getCharacter() << endl;
+	cout << "Current Enemy Attack damage: " << enemyRace.getAttack() << endl;
+	cout << "Current Enemy Defence: " << enemyRace.getDefence() << endl;
+	cout << "Current Enemy Strength: " << enemyRace.getStrength() << endl;
+	cout << "Current Enemy Health: " << enemyRace.getHealth() << endl;
+}

@@ -33,10 +33,10 @@ int main()
 	cout << endl;
 	player.initialiseAttributes(input); //Initialisation the player attributes
 	player.showInitAttributes(); //Display player attributes
-	cout << "Enemy" << endl;
+	cout << "Enemy: ";
 	enemyPlayer.showAttributes(); //Display enenmy attributes
 	cout << "Choose of the options: " << endl;
-	cout << "(A) Attack, (P) Pickup, (D) Drop, (L) Look, (X)Exit" << endl;
+	cout << "(A) Attack, (P) Pickup, (D) Drop, (L) Look, (I) Inventory, (X)Exit" << endl;
 	cin >> option;
 	//Logic to execute until Exit(X)
 	while(option!='X' || option!='x')
@@ -135,6 +135,11 @@ int main()
 		else if(option=='L' || option=='l')
 		{
 			player.showCurrentStats();
+			enemyPlayer.showCurrentStats();
+		}
+		else if(option=='I' || option=='i')
+		{
+			//Print inventory
 		}
 		//If any option other than A,X,P etc is picked then need to exit
 		else{
@@ -143,7 +148,7 @@ int main()
 		}
 		//Loop until Exit
 		cout << "Choose of the options: " << endl;
-		cout << "(A) Attack, (P) Pickup, (D) Drop, (L) Look, (X)Exit" << endl;
+		cout << "(A) Attack, (P) Pickup, (D) Drop, (L) Look, (I) Inventory, (X)Exit" << endl;
 		cin >> option;
 		//Increment counter
 		counter++;

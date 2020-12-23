@@ -263,10 +263,18 @@ int Player::getPlayerHealth()
  */
 void Player::itemPickup(armour eqArmour)
 {
-	playerInventory.pickup(eqArmour);
-	int str;
-	str = playerRace.getStrength() - eqArmour.getWeight();
-	playerRace.setStrength(str);
+	//Need to write logic to check if similar inventory is picked and if strength > eq weight
+	if(playerRace.getStrength() >= eqArmour.getWeight())
+	{
+		playerInventory.pickup(eqArmour);
+		int str;
+		str = playerRace.getStrength() - eqArmour.getWeight();
+		playerRace.setStrength(str);
+	}
+	else
+	{
+		cout << "You dont have enough strength to pick " << eqArmour.getString() << endl;
+	}
 }
 
 /*
@@ -277,10 +285,18 @@ void Player::itemPickup(armour eqArmour)
  */
 void Player::itemPickup(weapon eqWeapon)
 {
-	playerInventory.pickup(eqWeapon);
-	int str;
-	str = playerRace.getStrength() - eqWeapon.getWeight();
-	playerRace.setStrength(str);
+	//Need to write logic to check if similar inventory is picked and if strength > eq weight
+	if(playerRace.getStrength() >= eqWeapon.getWeight())
+	{
+		playerInventory.pickup(eqWeapon);
+		int str;
+		str = playerRace.getStrength() - eqWeapon.getWeight();
+		playerRace.setStrength(str);
+	}
+	else
+	{
+		cout << "You dont have enough strength to pick " << eqWeapon.getString() << endl;
+	}
 }
 
 /*
@@ -291,10 +307,18 @@ void Player::itemPickup(weapon eqWeapon)
  */
 void Player::itemPickup(shield eqShield)
 {
-	playerInventory.pickup(eqShield);
-	int str;
-	str = playerRace.getStrength() - eqShield.getWeight();
-	playerRace.setStrength(str);
+	//Need to write logic to check if similar inventory is picked and if strength > eq weight
+	if(playerRace.getStrength() >= eqShield.getWeight())
+	{
+		playerInventory.pickup(eqShield);
+		int str;
+		str = playerRace.getStrength() - eqShield.getWeight();
+		playerRace.setStrength(str);
+	}
+	else
+	{
+		cout << "You dont have enough strength to pick " << eqShield.getString() << endl;
+	}
 }
 
 /*
@@ -305,14 +329,21 @@ void Player::itemPickup(shield eqShield)
  */
 void Player::itemPickup(ring eqRing)
 {
-	playerInventory.pickup(eqRing);
-	int hp;
-	hp = playerRace.getHealth() + eqRing.getBHP();
-	playerRace.setHealth(hp);
-	int str;
-	str = playerRace.getStrength() + eqRing.getBStrength() - eqRing.getWeight();
-	playerRace.setStrength(str);
-	
+	//Logic to check if player strength > ring weight
+	if(playerRace.getStrength() >= eqRing.getWeight())
+	{
+		playerInventory.pickup(eqRing);
+		int hp;
+		hp = playerRace.getHealth() + eqRing.getBHP();
+		playerRace.setHealth(hp);
+		int str;
+		str = playerRace.getStrength() + eqRing.getBStrength() - eqRing.getWeight();
+		playerRace.setStrength(str);
+	}
+	else
+	{
+		cout << "You dont have enough strength to pick " << eqRing.getString() << endl;
+	}
 }
 
 /*
@@ -343,8 +374,8 @@ void Player::itemDrop()
 void Player::showCurrentStats()
 {
 	cout << "You picked race as " << playerRace.getCharacter() << endl;
-	cout << "Current Attack damage: " << playerRace.getAttack() + playerInventory.getTotAttack() << endl;
-	cout << "Current Defence: " << playerRace.getDefence() + playerInventory.getTotDef() << endl;
-	cout << "Current Strength: " << playerRace.getStrength() << endl;
-	cout << "Current Health: " << playerRace.getHealth() << endl;
+	cout << "Current Player Attack damage: " << playerRace.getAttack() + playerInventory.getTotAttack() << endl;
+	cout << "Current Player Defence: " << playerRace.getDefence() + playerInventory.getTotDef() << endl;
+	cout << "Current Player Strength: " << playerRace.getStrength() << endl;
+	cout << "Current Player Health: " << playerRace.getHealth() << endl;
 }
