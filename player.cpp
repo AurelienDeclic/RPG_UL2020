@@ -263,17 +263,24 @@ int Player::getPlayerHealth()
  */
 void Player::itemPickup(armour eqArmour)
 {
-	//Need to write logic to check if similar inventory is picked and if strength > eq weight
-	if(playerRace.getStrength() >= eqArmour.getWeight())
+	//Logic to check if similar inventory is picked and if strength > eq weight
+	if(((playerInventory.getArmor()).getString())=="NONE")
 	{
-		playerInventory.pickup(eqArmour);
-		int str;
-		str = playerRace.getStrength() - eqArmour.getWeight();
-		playerRace.setStrength(str);
+		if(playerRace.getStrength() >= eqArmour.getWeight())
+		{
+			playerInventory.pickup(eqArmour);
+			int str;
+			str = playerRace.getStrength() - eqArmour.getWeight();
+			playerRace.setStrength(str);
+		}
+		else
+		{
+			cout << "You dont have enough strength to pick " << eqArmour.getString() << endl;
+		}
 	}
 	else
 	{
-		cout << "You dont have enough strength to pick " << eqArmour.getString() << endl;
+		cout << "Armour already picked, need to drop existing before picking another" << endl;
 	}
 }
 
@@ -285,18 +292,25 @@ void Player::itemPickup(armour eqArmour)
  */
 void Player::itemPickup(weapon eqWeapon)
 {
-	//Need to write logic to check if similar inventory is picked and if strength > eq weight
-	if(playerRace.getStrength() >= eqWeapon.getWeight())
+	//Logic to check if similar inventory is picked and if strength > eq weight
+	if(((playerInventory.getWeapon()).getString())=="NONE")
 	{
-		playerInventory.pickup(eqWeapon);
-		int str;
-		str = playerRace.getStrength() - eqWeapon.getWeight();
-		playerRace.setStrength(str);
+		if(playerRace.getStrength() >= eqWeapon.getWeight())
+		{
+			playerInventory.pickup(eqWeapon);
+			int str;
+			str = playerRace.getStrength() - eqWeapon.getWeight();
+			playerRace.setStrength(str);
+		}
+		else
+		{
+			cout << "You dont have enough strength to pick " << eqWeapon.getString() << endl;
+		}
 	}
 	else
 	{
-		cout << "You dont have enough strength to pick " << eqWeapon.getString() << endl;
-	}
+		cout << "Weapon already picked, need to drop existing before picking another" << endl;
+	}	
 }
 
 /*
@@ -307,17 +321,24 @@ void Player::itemPickup(weapon eqWeapon)
  */
 void Player::itemPickup(shield eqShield)
 {
-	//Need to write logic to check if similar inventory is picked and if strength > eq weight
-	if(playerRace.getStrength() >= eqShield.getWeight())
+	//Logic to check if similar inventory is picked and if strength > eq weight
+	if(((playerInventory.getShield()).getString())=="NONE")
 	{
-		playerInventory.pickup(eqShield);
-		int str;
-		str = playerRace.getStrength() - eqShield.getWeight();
-		playerRace.setStrength(str);
+		if(playerRace.getStrength() >= eqShield.getWeight())
+		{
+			playerInventory.pickup(eqShield);
+			int str;
+			str = playerRace.getStrength() - eqShield.getWeight();
+			playerRace.setStrength(str);
+		}
+		else
+		{
+			cout << "You dont have enough strength to pick " << eqShield.getString() << endl;
+		}
 	}
 	else
 	{
-		cout << "You dont have enough strength to pick " << eqShield.getString() << endl;
+		cout << "Shield already picked, need to drop existing before picking another" << endl;
 	}
 }
 
@@ -360,7 +381,7 @@ void Player::itemDrop()
 	//str = playerRace.getStrength() +/- Strength;
 	//playerRace.setStrength(str);
 	//Need to know if the item dropped is ring to resetHealth
-	//int hp= playerRace.getHealth() +/- HP;
+	//int hp= playerRace.getHealth() - HP;
 	//playerRace.setHealth(hp);
 	
 }

@@ -33,11 +33,13 @@ class Player
 		void itemDrop(); //Need to code this!
 		void movePlayer(); //Need to code this probably!
 		void showCurrentStats(); //Need to code this for position of the player, shows current attributes
+		//void updateStats();
   
 	private:
 		Race playerRace;
 		inventory playerInventory;
 		int gold; //Used for player gold.
+		//int playerHP;
 };
 
 #endif
