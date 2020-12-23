@@ -135,7 +135,7 @@ void inventory::drop(){
 	if(EqShield.getString() != "NONE"){
 	  // DROP SHIELD ON BOARD FROM BOARD CLASS---------------------------------------------------------------------------------------------
 	  EqShield = shield(0);
-	}else{cout << "You have no ring equiped!" << endl;}
+	}else{cout << "You have no shield equiped!" << endl;}
 	break;
       default://the ring has been chosen
 	if(EqRings[0].getString() != "NONE"){ // if there are rings in the inventory
@@ -146,6 +146,7 @@ void inventory::drop(){
   }else{ //if choice is not possible (ID is not printed to the screen)
     cout << "You can not drop something that does not exist !" << endl;
   }
+  Update();
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -173,7 +174,6 @@ void inventory::DeleteRing(int EMP){
     EqRings = new ring[--NRings]; //initiate a new ring object with the right size, lowers the value of NRings
     EqRings = TempArr; //copy the temporary array
   }
-  Update();//update the bonus values
 }//end of function: TempArray deleted
 
 /////////////////////////////////////////////////////////////////////////

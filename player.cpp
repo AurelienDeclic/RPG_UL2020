@@ -25,6 +25,10 @@ void Player::initialiseAttributes(int input)
 {
 	gold=0;
 	playerRace.setAttributes(input);
+	PlayerSTR=playerRace.getStrength(); //Initialising player strength to race strength
+	PlayerHP=playerRace.getHealth(); //Initialising player health to race health
+	Xcoord = 200/2; //sets starting coordinates at the middle of the board
+    Ycoord = 200/2;
 }
 
 /*
@@ -134,8 +138,6 @@ int Player::attack(bool isNight)
  */
 void Player::defence(int &damage, bool isNight)
 {
-	int hp;
-	int damageTaken;
 	if(playerRace.getDefence() + playerInventory.getTotDef()>=damage)
 	{
 		damageTaken=0;
@@ -154,8 +156,7 @@ void Player::defence(int &damage, bool isNight)
 		{
 			cout << "Player Defence failed" << endl;
 			cout << "Player damage taken " << damageTaken << endl;
-			hp = playerRace.getHealth() - damageTaken;
-			playerRace.setHealth(hp);
+			PlayerHP -= damageTaken;
 		}			
 	}
 	else if(playerRace.getCharacter()=="Elf")
@@ -163,16 +164,13 @@ void Player::defence(int &damage, bool isNight)
 		if(playerRace.getDefenceChance()>3)
 		{
 			cout << "Player Defence successful, health increased by 1" << endl;
-			hp = playerRace.getHealth() + 1;
-			playerRace.setHealth(hp);
-			
+			PlayerHP += 1;
 		}
 		else
 		{
 			cout << "Player Defence failed" << endl;
 			cout << "Player damage taken " << damageTaken << endl;
-			hp = playerRace.getHealth() - damageTaken;
-			playerRace.setHealth(hp);
+			PlayerHP -= damageTaken;
 		}
 	}
 	else if(playerRace.getCharacter()=="Dwarf")
@@ -185,8 +183,7 @@ void Player::defence(int &damage, bool isNight)
 		{
 			cout << "Player Defence failed" << endl;
 			cout << "Player damage taken " << damageTaken << endl;
-			hp = playerRace.getHealth() - damageTaken;
-			playerRace.setHealth(hp);
+			PlayerHP -= damageTaken;
 		}
 	}
 	else if(playerRace.getCharacter()=="Hobbit")
@@ -195,15 +192,13 @@ void Player::defence(int &damage, bool isNight)
 		{
 			damageTaken=rand()%6;
 			cout << "Player Defence successful, however " << damageTaken << " damage is caused" << endl;
-			hp = playerRace.getHealth() - damageTaken;
-			playerRace.setHealth(hp);
+			PlayerHP -= damageTaken;
 		}
 		else
 		{
 			cout << "Player Defence failed" << endl;
 			cout << "Player damage taken " << damageTaken << endl;
-			hp = playerRace.getHealth() - damageTaken;
-			playerRace.setHealth(hp);
+			PlayerHP -= damageTaken;
 		}
 	}
 	else if(playerRace.getCharacter()=="Orc")
@@ -213,15 +208,13 @@ void Player::defence(int &damage, bool isNight)
 			if(playerRace.getDefenceChance()>1)
 			{
 				cout << "Player Defence successful, health increased by 1" << endl;
-				hp = playerRace.getHealth() + 1;
-				playerRace.setHealth(hp);
+				PlayerHP += 1;
 			}
 			else
 			{
 				cout << "Player Defence failed" << endl;
 				cout << "Player damage taken " << damageTaken << endl;
-				hp = playerRace.getHealth() - damageTaken;
-				playerRace.setHealth(hp);
+				PlayerHP -= damageTaken;
 			}
 		}
 		else
@@ -230,15 +223,13 @@ void Player::defence(int &damage, bool isNight)
 			{
 				cout << "Player Defence successful" << endl;
 				cout << "However, Player damage taken " << damageTaken/4 << endl;
-				hp = playerRace.getHealth() - (damageTaken)/4;
-				playerRace.setHealth(hp);
+				PlayerHP = PlayerHP - (damageTaken)/4;
 			}
 			else
 			{
 				cout << "Player Defence failed" << endl;
 				cout << "Player damage taken " << damageTaken << endl;
-				hp = playerRace.getHealth() - damageTaken;
-				playerRace.setHealth(hp);
+				PlayerHP -= damageTaken;
 			}
 		}	
 	}
@@ -252,7 +243,7 @@ void Player::defence(int &damage, bool isNight)
  */
 int Player::getPlayerHealth()
 {
-	return playerRace.getHealth();
+	return PlayerHP;
 }
 
 /*
@@ -266,12 +257,10 @@ void Player::itemPickup(armour eqArmour)
 	//Logic to check if similar inventory is picked and if strength > eq weight
 	if(((playerInventory.getArmor()).getString())=="NONE")
 	{
-		if(playerRace.getStrength() >= eqArmour.getWeight())
+		if(getPlayerSTR() >= eqArmour.getWeight())
 		{
 			playerInventory.pickup(eqArmour);
-			int str;
-			str = playerRace.getStrength() - eqArmour.getWeight();
-			playerRace.setStrength(str);
+			updateStats();
 		}
 		else
 		{
@@ -295,12 +284,10 @@ void Player::itemPickup(weapon eqWeapon)
 	//Logic to check if similar inventory is picked and if strength > eq weight
 	if(((playerInventory.getWeapon()).getString())=="NONE")
 	{
-		if(playerRace.getStrength() >= eqWeapon.getWeight())
+		if(getPlayerSTR() >= eqWeapon.getWeight())
 		{
 			playerInventory.pickup(eqWeapon);
-			int str;
-			str = playerRace.getStrength() - eqWeapon.getWeight();
-			playerRace.setStrength(str);
+			updateStats();
 		}
 		else
 		{
@@ -324,12 +311,10 @@ void Player::itemPickup(shield eqShield)
 	//Logic to check if similar inventory is picked and if strength > eq weight
 	if(((playerInventory.getShield()).getString())=="NONE")
 	{
-		if(playerRace.getStrength() >= eqShield.getWeight())
+		if(getPlayerSTR() >= eqShield.getWeight())
 		{
 			playerInventory.pickup(eqShield);
-			int str;
-			str = playerRace.getStrength() - eqShield.getWeight();
-			playerRace.setStrength(str);
+			updateStats();
 		}
 		else
 		{
@@ -351,15 +336,10 @@ void Player::itemPickup(shield eqShield)
 void Player::itemPickup(ring eqRing)
 {
 	//Logic to check if player strength > ring weight
-	if(playerRace.getStrength() >= eqRing.getWeight())
+	if(getPlayerSTR() >= eqRing.getWeight())
 	{
 		playerInventory.pickup(eqRing);
-		int hp;
-		hp = playerRace.getHealth() + eqRing.getBHP();
-		playerRace.setHealth(hp);
-		int str;
-		str = playerRace.getStrength() + eqRing.getBStrength() - eqRing.getWeight();
-		playerRace.setStrength(str);
+		updateStats();
 	}
 	else
 	{
@@ -377,13 +357,7 @@ void Player::itemDrop()
 {
 	//Incomplete coz player needs to know the inventory dropped to set the new value of str and health (add or subtract).
 	playerInventory.drop();
-	//int str;
-	//str = playerRace.getStrength() +/- Strength;
-	//playerRace.setStrength(str);
-	//Need to know if the item dropped is ring to resetHealth
-	//int hp= playerRace.getHealth() - HP;
-	//playerRace.setHealth(hp);
-	
+	updateStats();
 }
 
 /*
@@ -394,9 +368,81 @@ void Player::itemDrop()
  */
 void Player::showCurrentStats()
 {
+	cout << "Race attri " << playerRace.getAttack() << endl;
+	cout << "Player attri " << playerInventory.getTotAttack() << endl;
 	cout << "You picked race as " << playerRace.getCharacter() << endl;
 	cout << "Current Player Attack damage: " << playerRace.getAttack() + playerInventory.getTotAttack() << endl;
 	cout << "Current Player Defence: " << playerRace.getDefence() + playerInventory.getTotDef() << endl;
-	cout << "Current Player Strength: " << playerRace.getStrength() << endl;
-	cout << "Current Player Health: " << playerRace.getHealth() << endl;
+	cout << "Current Player Strength utilised: " << playerInventory.getTotWeight() <<"/"<< getPlayerSTR() << endl;
+	cout << "Current Player Health: " << getPlayerHP() << endl;
+	cout << "Current Player Co-ordinates: [" << Ycoord << "][" << Xcoord << "]" << endl;
+}
+
+/*
+ * Method name: updateStats
+ * Description: Method to update player attributes.	
+ * Parameters: None
+ * Return: None
+ */
+void Player::updateStats()
+{
+	PlayerSTR=playerRace.getStrength()+playerInventory.getTotStrength();
+	PlayerHP=playerRace.getHealth()+playerInventory.getTotHP();
+}
+
+/*
+ *method movePlayer
+ *input: integer   1:NORTH - 2:WEST - 3:SOUTH - 4:EAST
+ *description: changes the players coordinate in function of input
+ *output: none, modifies Xcoord and Ycoord value of player object
+ */
+void Player::movePlayer(char Direction)
+{
+  switch(Direction)
+  {
+    case 'n'://Moves the player to the north
+    case 'N':
+      if(Ycoord+1 < 200-1)
+	  { //if we don't go out of bounds ---------------
+		Ycoord++;
+      }
+	  else
+	  {
+		cout << "You can't go north anymore..." << endl;
+      }
+    break;
+    case 'w': //Moves the player to the west
+    case 'W':
+      if((Xcoord-1) > 0)
+	  {
+		Xcoord--;
+      }
+	  else
+	  {
+		cout << "You can't go west anymore..." << endl;
+      }
+    break;
+    case 's': //Moves the player to the south
+    case 'S':
+      if((Ycoord-1) > 0)
+	  {
+		Ycoord--;
+      }
+	  else
+	  {
+		cout << "You can't go south anymore..." << endl;
+      }
+    break;
+    case 'e': //Moves the player to the East
+    case 'E':
+      if((Xcoord+1) < 200-1)
+	  {
+		Xcoord++;
+      }
+	  else
+	  {
+		cout << "You can't go east anymore..." << endl;
+      }
+    break;
+  }
 }

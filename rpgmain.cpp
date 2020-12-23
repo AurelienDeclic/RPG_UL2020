@@ -35,7 +35,8 @@ int main()
 	player.showInitAttributes(); //Display player attributes
 	cout << "Enemy: ";
 	enemyPlayer.showAttributes(); //Display enenmy attributes
-	cout << "Choose of the options: " << endl;
+	cout <<"Please choose direction: N,S,E,W or" << endl;
+	cout << "Choose one of the options: " << endl;
 	cout << "(A) Attack, (P) Pickup, (D) Drop, (L) Look, (I) Inventory, (X)Exit" << endl;
 	cin >> option;
 	//Logic to execute until Exit(X)
@@ -47,8 +48,12 @@ int main()
 			player.alterStats(isNight);			//Currently only Orc status is altered.
 			enemyPlayer.alterStats(isNight);
 		}
+		if(option=='N' || option=='n' || option=='S' || option=='s' || option=='E' || option=='e' || option=='W' || option=='w')
+		{
+			player.movePlayer(option);
+		}
 		//If option chosen is to attack
-		if(option=='A' || option=='a')
+		else if(option=='A' || option=='a')
 		{
 			int attackDamage=0;
 			attackDamage=player.attack(isNight); //Call attack function of the player to find the damage
@@ -147,7 +152,8 @@ int main()
 			break;
 		}
 		//Loop until Exit
-		cout << "Choose of the options: " << endl;
+		cout <<"Please choose direction: N,S,E,W or" << endl;
+		cout << "Choose one of the options: " << endl;
 		cout << "(A) Attack, (P) Pickup, (D) Drop, (L) Look, (I) Inventory, (X)Exit" << endl;
 		cin >> option;
 		//Increment counter

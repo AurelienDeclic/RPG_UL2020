@@ -30,16 +30,24 @@ class Player
 		void itemPickup(weapon); //Pickup weapon and add to player inventory
 		void itemPickup(shield); //Pickup shield and add to player inventory
 		void itemPickup(ring); //Pickup ring and add to player inventory
-		void itemDrop(); //Need to code this!
-		void movePlayer(); //Need to code this probably!
+		void itemDrop(); //Drop item from inventory
+		void movePlayer(char direction); //Move player co-ordinates: N,S,E,W
 		void showCurrentStats(); //Need to code this for position of the player, shows current attributes
-		//void updateStats();
+		void updateStats(); //Function to update player Stats
+		inline int getPlayerSTR(){return PlayerSTR;}; //Function to get current player Strength
+		inline int getPlayerHP(){return PlayerHP;}; //Function to get current player HP
+		inline int getX(){return Xcoord;};
+		inline int getY(){return Ycoord;};
   
 	private:
-		Race playerRace;
-		inventory playerInventory;
+		Race playerRace; //Player Race
+		inventory playerInventory; //Player Inventory
 		int gold; //Used for player gold.
-		//int playerHP;
+		int PlayerHP; //Player Health points
+		int PlayerSTR; //Player Strength
+		int damageTaken; //DamageTaken by player
+		int Xcoord; // Player X coordinate, initialized in the center of the board from Xcoord to BoardSize-1
+		int Ycoord; // Player Y coordinate, same as above
 };
 
 #endif

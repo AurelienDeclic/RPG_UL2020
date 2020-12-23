@@ -154,24 +154,13 @@ int Race::getDefenceChance()
 
 /*
  * Method name: setHealth
- * Description: Method to update/set race health for player or enemy	
+ * Description: Method to update/set race health for enemy	
  * Parameters: Updated health point of type integer
  * Return: None 
  */
 void Race::setHealth(int hp)
 {
 	health=hp;
-}
-
-/*
- * Method name: setStrength
- * Description: Method to update/set race strength of player	
- * Parameters:  Updated strength point of type integer
- * Return: None 
- */
-void Race::setStrength(int str)
-{
-	strength=str;
 }
 
 /*
