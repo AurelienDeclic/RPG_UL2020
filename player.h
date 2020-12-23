@@ -35,7 +35,7 @@ class Player
 		void showCurrentStats(); //Shows player current attributes
 		void updateStats(); //Function to update player Stats
 		inline int getPlayerSTR(){return playerSTR;}; //Function to get current player Strength
-		inline int getPlayerHP(){return playerHP;}; //Function to get current player HP
+		inline int getPlayerHP(){return playerHP;}; //Function to get current player race HP
 		inline int getX(){return xCoord;}; //Function to provide player X co-ordinates
 		inline int getY(){return yCoord;}; //Function to provide player Y co-ordinates.
   

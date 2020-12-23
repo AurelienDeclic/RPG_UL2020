@@ -243,7 +243,8 @@ void Player::defence(int &damage, bool isNight)
  */
 int Player::getPlayerHealth()
 {
-	return playerHP;
+	int hp = getPlayerHP() + playerInventory.getTotHP();
+	return hp;
 }
 
 /*
@@ -372,20 +373,19 @@ void Player::showCurrentStats()
 	cout << "Current Player Attack damage: " << playerRace.getAttack() + playerInventory.getTotAttack() << endl;
 	cout << "Current Player Defence: " << playerRace.getDefence() + playerInventory.getTotDef() << endl;
 	cout << "Current Player Strength utilised: " << playerInventory.getTotWeight() <<"/"<< getPlayerSTR() << endl;
-	cout << "Current Player Health: " << playerHP << endl;
+	cout << "Current Player Health: " << getPlayerHP() + playerInventory.getTotHP() << endl;
 	cout << "Current Player Co-ordinates: [" << yCoord << "][" << xCoord << "]" << endl;
 }
 
 /*
  * Method name: updateStats
- * Description: Method to update player strength and health attributes based on item picked or dropped.	
+ * Description: Method to update player strength based on item picked or dropped.	
  * Parameters: None
  * Return: None
  */
 void Player::updateStats()
 {
 	playerSTR=playerRace.getStrength()+playerInventory.getTotStrength();
-	playerHP=playerRace.getHealth()+playerInventory.getTotHP();
 }
 
 /*

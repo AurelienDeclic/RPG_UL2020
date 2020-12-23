@@ -15,7 +15,7 @@ bool ifNight(int cnt);
 int main()
 {
 	srand(time(NULL));
-	board boardB(5);
+	//board boardB(5);
     Player player;
 	Enemy enemyPlayer; //Enemy initialised using constructor
 	armour pArmour;
