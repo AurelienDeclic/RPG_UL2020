@@ -1,3 +1,13 @@
+/**********************************************************
+ * player.cpp 
+ * Implementation of the Player class.
+ * Contains all methods associated with the class.
+ * c++ programming language.
+ * date created:	18.12.2020
+ * date last-modified:	22.12.2020
+ **********************************************************/
+
+// Include standard library and player interface
 #include <cstdlib>
 #include <iostream>
 #include "player.h"
@@ -5,55 +15,46 @@
 
 using namespace std;
 
+/*
+ * Method name: initialiseAttributes
+ * Description: Method to initialse player race attributes.	
+ * Parameters: input which is of type integer provided in the console
+ * Return: None
+ */
 void Player::initialiseAttributes(int input)
 {
 	gold=0;
-	isItemPicked=false;
-	switch(input)
-	{
-		case 1:
-		playerRace.setAttributes("Human", 30, 20, 60, 100);
-		break;
-		case 2:
-		playerRace.setAttributes("Elf", 40, 10, 40, 70);
-		break;
-		case 3:
-		playerRace.setAttributes("Dwarf", 30, 20, 50, 130);
-		break;
-		case 4:
-		playerRace.setAttributes("Hobbit", 25, 20, 70, 85);
-		break;
-		case 5:
-		playerRace.setAttributes("Orc", 25, 10, 50, 130);
-		break;
-	}
-	
+	playerRace.setAttributes(input);
 }
 
-void Player::showAttributes()
+/*
+ * Method name: showInitAttributes
+ * Description: Method to display player attributes once a race is chosen in console.	
+ * Parameters: None
+ * Return: None
+ */
+void Player::showInitAttributes()
 {
 	playerRace.showAttributes();
 }
 
+/*
+ * Method name: alterStats
+ * Description: Method to alter player default race stats based on time [day/night].	
+ * Parameters: boolean value of day or night
+ * Return: None
+ */
 void Player::alterStats(bool isNight)
 {
-	if(isNight==true)
-	{
-		if(playerRace.getCharacter()=="Orc")
-		{
-			playerRace.alterStats(45, 25, true);
-		}
-	}
-	else
-	{
-		if(playerRace.getCharacter()=="Orc")
-		{
-			playerRace.alterStats(25, 10, false);
-		}
-	}
-	
+	playerRace.alterStats(isNight);
 }
 
+/*
+ * Method name: attack
+ * Description: Method to attack enemy.	
+ * Parameters: boolean value of day or night
+ * Return: damage of type int
+ */
 int Player::attack(bool isNight)
 {
 	int damage;
@@ -125,6 +126,12 @@ int Player::attack(bool isNight)
 	return damage;
 }
 
+/*
+ * Method name: defence
+ * Description: Method to defend from enemy attack.	
+ * Parameters: damage of type int and boolean value of day or night
+ * Return: None
+ */
 void Player::defence(int &damage, bool isNight)
 {
 	int hp;
@@ -237,16 +244,23 @@ void Player::defence(int &damage, bool isNight)
 	}
 }
 
+/*
+ * Method name: getPlayerHealth
+ * Description: Method to display player current health.	
+ * Parameters: None
+ * Return: Player health of type int.
+ */
 int Player::getPlayerHealth()
 {
 	return playerRace.getHealth();
 }
 
-int Player::printGold()
-{
-	return gold;
-}
-
+/*
+ * Method name: itemPickup
+ * Description: Method to pickup item of type Armour from the board.	
+ * Parameters: Armour
+ * Return: None
+ */
 void Player::itemPickup(armour eqArmour)
 {
 	playerInventory.pickup(eqArmour);
@@ -255,6 +269,12 @@ void Player::itemPickup(armour eqArmour)
 	playerRace.setStrength(str);
 }
 
+/*
+ * Method name: itemPickup
+ * Description: Method to pickup item of type Weapon from the board.	
+ * Parameters: Weapon
+ * Return: None
+ */
 void Player::itemPickup(weapon eqWeapon)
 {
 	playerInventory.pickup(eqWeapon);
@@ -263,6 +283,12 @@ void Player::itemPickup(weapon eqWeapon)
 	playerRace.setStrength(str);
 }
 
+/*
+ * Method name: itemPickup
+ * Description: Method to pickup item of type Shield from the board.	
+ * Parameters: Shield
+ * Return: None
+ */
 void Player::itemPickup(shield eqShield)
 {
 	playerInventory.pickup(eqShield);
@@ -271,6 +297,12 @@ void Player::itemPickup(shield eqShield)
 	playerRace.setStrength(str);
 }
 
+/*
+ * Method name: itemPickup
+ * Description: Method to pickup item of type Ring from the board.	
+ * Parameters: Ring
+ * Return: None
+ */
 void Player::itemPickup(ring eqRing)
 {
 	playerInventory.pickup(eqRing);
@@ -283,6 +315,12 @@ void Player::itemPickup(ring eqRing)
 	
 }
 
+/*
+ * Method name: itemDrop
+ * Description: Method to drop item on the board.	
+ * Parameters: 
+ * Return: None
+ */
 void Player::itemDrop()
 {
 	//Incomplete coz player needs to know the inventory dropped to set the new value of str and health (add or subtract).
@@ -296,6 +334,12 @@ void Player::itemDrop()
 	
 }
 
+/*
+ * Method name: showCurrentStats
+ * Description: Method to display player current attributes.	
+ * Parameters: None
+ * Return: None
+ */
 void Player::showCurrentStats()
 {
 	cout << "You picked race as " << playerRace.getCharacter() << endl;

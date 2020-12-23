@@ -1,3 +1,11 @@
+/**********************************************************
+ * Enemy.h 
+ * Interface for the Enemy class
+ * c++ programming language.
+ * date created:	18.12.2020
+ * date last-modified:	22.12.2020
+ **********************************************************/
+
 #ifndef ENEMY_H
 #define ENEMY_H
 
@@ -7,6 +15,7 @@ class Enemy
 {
  public:
 	Enemy(); //Enemy constructor
+	~Enemy(); //Enemy destructor 
 	void initialiseAttributes(); //Initialise enemy character attributes
 	void showAttributes(); //Show enemy attributes
 	int attack(bool isNight); //Enemy attack function

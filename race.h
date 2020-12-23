@@ -1,23 +1,29 @@
+/**********************************************************
+ * race.h 
+ * Interface for the Race class
+ * c++ programming language.
+ * date created:	18.12.2020
+ * date last-modified:	22.12.2020
+ **********************************************************/
+
 #ifndef RACE_H
 #define RACE_H
-
-#include<string>
 
 class Race{
 
     public:
-		void setAttributes(std::string name, int att, int def, int hlt, int str); //Initialising stats of a character - Player/Enemy
+		void setAttributes(int input); //Initialising stats of a character - Player/Enemy
         void showAttributes(); //Show race attributes
-		std::string getCharacter(); //Function to get Character data.
-		int getAttack(); //Function to get attack value.
+		inline std::string getCharacter(){return character;}; //Function to get Race name - Human/Orc/...
+		inline int getAttack(){return attack;}; //Function to get attack value.
 		int getAttackChance(); //Function to get attack chance.
-		int getDefence(); //Function to get defence value.
+		inline int getDefence(){return defence;}; //Function to get defence value.
 		int getDefenceChance(); //Function to get defence chance.
-		int getStrength(); // Function to get strenght value.
-		int getHealth(); //Function to get health value.
-		void setHealth(int hp); //Function to update health based on attack/defence
-		void setStrength(int str); //Function to add strength if ring of strength is picked
-		void alterStats(int att,int def, bool time); //Function to alter stats of a race based on time of the day
+		inline int getStrength(){return strength;}; // Function to get strength value.
+		inline int getHealth(){return health;}; //Function to get health value.
+		void setHealth(int hp); //Function to update health based on attack/defence/Inventory
+		void setStrength(int str); //Function to update strength based on Inventory
+		void alterStats(bool time); //Function to alter stats of a race based on the time (day/night)
 	
 	protected:
         std::string character; // human or elf etc...

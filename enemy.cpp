@@ -1,63 +1,81 @@
+/**********************************************************
+ * enemy.cpp 
+ * Implementation of the Enemy class.
+ * Contains constructor, destructor and all methods associated with the class.
+ * c++ programming language.
+ * date created:	18.12.2020
+ * date last-modified:	22.12.2020
+ **********************************************************/
+
+//Include standard libraries and enemy interface.
 #include <cstdlib>
 #include <iostream>
 #include "enemy.h"
-#include "race.h"
-
 
 using namespace std;
 
-
+/*
+ * Enemy constructor
+ * Description: Used to initialise enemyRace attributes.	
+ * Parameters: None
+ * Return: None
+ */
 Enemy::Enemy(){
   initialiseAttributes();
 }
 
-void Enemy::initialiseAttributes()
-{
-	srand(time(NULL));
-	switch(rand()%5+1)
-	{
-		case 1:
-		enemyRace.setAttributes("Human", 30, 20, 60, 100);
-		break;
-		case 2:
-		enemyRace.setAttributes("Elf", 40, 10, 40, 70);
-		break;
-		case 3:
-		enemyRace.setAttributes("Dwarf", 30, 20, 50, 130);
-		break;
-		case 4:
-		enemyRace.setAttributes("Hobbit", 25, 20, 70, 85);
-		break;
-		case 5:
-		enemyRace.setAttributes("Orc", 25, 10, 50, 130);
-		break;
-	}
+/*
+ * Enemy destructor
+ * Description: Default enemy destructor.	
+ * Parameters: None
+ * Return: None
+ */
+Enemy::~Enemy(){
 	
 }
 
+/*
+ * Method name: initialiseAttributes
+ * Description: Method to initialse enemy race attributes.	
+ * Parameters: None
+ * Return: None
+ */
+void Enemy::initialiseAttributes()
+{
+	int input;
+	srand(time(NULL));
+	input=rand()%5+1;
+	enemyRace.setAttributes(input);
+}
+
+/*
+ * Method name: showAttributes
+ * Description: Method to display enemey attributes.	
+ * Parameters: None
+ * Return: None
+ */
 void Enemy::showAttributes()
 {
 	enemyRace.showAttributes();
 }
 
+/*
+ * Method name: alterStats
+ * Description: Method to alter enemy default race stats based on time [day/night].	
+ * Parameters: boolean value of day or night
+ * Return: None
+ */
 void Enemy::alterStats(bool isNight)
 {
-	if(isNight==true)
-	{
-		if(enemyRace.getCharacter()=="Orc")
-		{
-			enemyRace.alterStats(45, 25, true);
-		}
-	}
-	else
-	{
-		if(enemyRace.getCharacter()=="Orc")
-		{
-			enemyRace.alterStats(25, 10, false);
-		}
-	}
+	enemyRace.alterStats(isNight);
 }
 
+/*
+ * Method name: attack
+ * Description: Method to attack player.	
+ * Parameters: boolean value of day or night
+ * Return: damage of type int
+ */
 int Enemy::attack(bool isNight)
 {
 	int damage;
@@ -129,6 +147,12 @@ int Enemy::attack(bool isNight)
 	return damage;
 }
 
+/*
+ * Method name: defence
+ * Description: Method to defend from player attack.	
+ * Parameters: damage of type int and boolean value of day or night
+ * Return: None
+ */
 void Enemy::defence(int &damage, bool isNight)
 {
 	int hp;
@@ -241,11 +265,23 @@ void Enemy::defence(int &damage, bool isNight)
 	}
 }
 
+/*
+ * Method name: getEnemyHealth
+ * Description: Method to display enemey current health.	
+ * Parameters: None
+ * Return: Enemy health of type int.
+ */
 int Enemy::getEnemyHealth()
 {
 	return enemyRace.getHealth();
 }
 
+/*
+ * Method name: getDefenceValue
+ * Description: Method to display enemey defence value. 	
+ * Parameters: None
+ * Return: Enemy defence of type int.
+ */
 int Enemy::getDefenceValue()
 {
 	return enemyRace.getDefence();

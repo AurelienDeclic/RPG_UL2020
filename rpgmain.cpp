@@ -31,13 +31,13 @@ int main()
 	cout << "5-Orc" << endl;
 	cin >> input;
 	cout << endl;
+	player.initialiseAttributes(input); //Initialisation the player attributes
+	player.showInitAttributes(); //Display player attributes
+	cout << "Enemy" << endl;
+	enemyPlayer.showAttributes(); //Display enenmy attributes
 	cout << "Choose of the options: " << endl;
 	cout << "(A) Attack, (P) Pickup, (D) Drop, (L) Look, (X)Exit" << endl;
 	cin >> option;
-	player.initialiseAttributes(input); //Initialisation the player attributes
-	player.showAttributes(); //Display player attributes
-	cout << "Enemy" << endl;
-	enemyPlayer.showAttributes(); //Display enenmy attributes
 	//Logic to execute until Exit(X)
 	while(option!='X' || option!='x')
 	{	
