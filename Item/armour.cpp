@@ -1,7 +1,7 @@
 #include <cstdlib>
 #include <time.h>
 #include <iostream>
-#include "armour.h"
+#include "Item/armour.h"
 
 using namespace std;
 
@@ -11,7 +11,6 @@ using namespace std;
 /////////////////////////////////////////////////////////
 armour::armour(){
   int NPossibleItems = 2;
-  srand(static_cast<unsigned int>(time(NULL)));
   setStats(rand() % NPossibleItems +1);
 }
 

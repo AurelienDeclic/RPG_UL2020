@@ -10,7 +10,7 @@
 // Include standard library and player interface
 #include <cstdlib>
 #include <iostream>
-#include "player.h"
+#include "Player/player.h"
 #include <string>
 
 using namespace std;

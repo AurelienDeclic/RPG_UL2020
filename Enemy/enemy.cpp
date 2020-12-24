@@ -10,7 +10,7 @@
 //Include standard libraries and enemy interface.
 #include <cstdlib>
 #include <iostream>
-#include "enemy.h"
+#include "Enemy/enemy.h"
 
 using namespace std;
 
@@ -43,7 +43,6 @@ Enemy::~Enemy(){
 void Enemy::initialiseAttributes()
 {
 	int input;
-	srand(static_cast<unsigned int>(time(NULL)));
 	//Initialise random enemies for the board
 	input=rand()%5+1;
 	enemyRace.setAttributes(input);

@@ -11,9 +11,9 @@
 #define PLAYER_H
 
 //Including interface of other classes since it will be used in Player class
-#include "race.h"
-#include "inventory.h"
-#include "item.h"
+#include "Race/race.h"
+#include "Player/inventory.h"
+#include "Item/item.h"
 
 class Player  
 {

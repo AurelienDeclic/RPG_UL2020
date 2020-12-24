@@ -9,7 +9,7 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
-#include "race.h"
+#include "Race/race.h"
 
 class Enemy  
 {

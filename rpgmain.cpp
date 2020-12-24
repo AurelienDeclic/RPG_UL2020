@@ -1,11 +1,11 @@
 #include <cstdlib>
 #include <iostream>
-#include "player.h"
-#include "enemy.h"
-#include "weapon.h"
-#include "armour.h"
-#include "ring.h"
-#include "board.h"
+#include "Player/player.h"
+#include "Enemy/enemy.h"
+#include "Item/weapon.h"
+#include "Item/armour.h"
+#include "Item/ring.h"
+#include "Board/board.h"
 
 using namespace std;
 
@@ -14,7 +14,7 @@ bool ifNight(int cnt);
 
 int main()
 {
-	srand(time(NULL));
+	srand(static_cast<unsigned int>(time(NULL)));
 	//board boardB(5);
     Player player;
 	Enemy enemyPlayer; //Enemy initialised using constructor

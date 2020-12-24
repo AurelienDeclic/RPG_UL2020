@@ -1,10 +1,7 @@
 #include <cstdlib>
 #include <iostream>
-#include "inventory.h"
-#include "shield.h"
-#include "weapon.h"
-#include "armour.h"
-#include "ring.h"
+#include "Player/inventory.h"
+
 
 using namespace std;
 

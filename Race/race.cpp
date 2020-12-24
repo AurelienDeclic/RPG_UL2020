@@ -11,7 +11,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
-#include "race.h"
+#include "Race/race.h"
 
 using namespace std;
 
@@ -83,7 +83,6 @@ void Race::showAttributes()
  */
 int Race::getAttackChance()
 {
-	srand(static_cast<unsigned int>(time(NULL)));
 	//Value returned here will be checked during attack to know if the probability of attack passed or failed.
 	if(character=="Human")
 	{
@@ -123,7 +122,6 @@ int Race::getAttackChance()
  */
 int Race::getDefenceChance()
 {
-	srand(static_cast<unsigned int>(time(NULL)));
 	//Value returned here will be checked during defence to know if the probability of defence passed or failed.
 	if(character=="Human")
 	{
@@ -153,17 +151,6 @@ int Race::getDefenceChance()
 		}
 	}
 	return 0;
-}
-
-/*
- * Method name: setHealth
- * Description: Method to update/set race health for enemy	
- * Parameters: Updated health point of type integer
- * Return: None 
- */
-void Race::setHealth(int hp)
-{
-	health=hp;
 }
 
 /*

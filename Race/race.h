@@ -20,8 +20,7 @@ class Race
 		inline int getDefence(){return defence;}; //Function to get defence value.
 		int getDefenceChance(); //Function to get defence chance.
 		inline int getStrength(){return strength;}; // Function to get strength value.
-		inline int getHealth(){return health;}; //Function to get health value.
-		void setHealth(int hp); //Function to update health based on enemy defence
+		inline int getHealth(){return health;}; //Function to get health value
 		void alterStats(bool time); //Function to alter stats of a race based on the time (day/night)
 	
 	private:

@@ -1,6 +1,6 @@
 #include <cstdlib>
 #include <time.h>
-#include "shield.h"
+#include "Item/shield.h"
 
 using namespace std;
 
@@ -10,7 +10,6 @@ using namespace std;
 /////////////////////////////////////////////////////////
 shield::shield(){
   int NPossibleItems = 2;
-  //srand(time(NULL));
   setStats(rand() % NPossibleItems +1);
 }
 
