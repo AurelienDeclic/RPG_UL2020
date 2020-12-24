@@ -44,7 +44,7 @@ void shield::setStats(int ID){
     name = "Small shield (shield)";
     weight = 10;
     BonusAttack = 0;
-    BonusDefense = 10;
+    BonusDefense = 5;
     BonusHP = 0;
     BonusStrength = 0;
     break;

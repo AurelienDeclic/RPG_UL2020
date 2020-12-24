@@ -27,8 +27,8 @@ void Player::initialiseAttributes(int input)
 	playerRace.setAttributes(input); //Setting race attributes
 	playerSTR=playerRace.getStrength(); //Initialising player strength to race strength
 	playerHP=playerRace.getHealth(); //Initialising player health to race health
-	xCoord = 200/2; //sets starting coordinates at the middle of the board
-    yCoord = 200/2; //sets starting coordinates at the middle of the board
+	xCoord = 0; //sets starting coordinates at the middle of the board
+    yCoord = 0; //sets starting coordinates at the middle of the board
 }
 
 /*
@@ -354,11 +354,12 @@ void Player::itemPickup(ring eqRing)
  * Parameters: 
  * Return: None
  */
-void Player::itemDrop()
-{
-	//Drop item and update player attributes
-	playerInventory.drop();
-	updateStats();
+int Player::itemDrop(int y, int x, armour armour_arr[],shield shield_arr[],weapon weapon_arr[],ring ring_arr[]) {
+    //Drop item and update player attributes
+
+    int to_return = playerInventory.drop(y, x, armour_arr, shield_arr, weapon_arr, ring_arr);
+    updateStats();
+    return to_return;
 }
 
 /*
@@ -375,6 +376,7 @@ void Player::showCurrentStats()
 	cout << "Current Player Strength utilised: " << playerInventory.getTotWeight() <<"/"<< getPlayerSTR() << endl;
 	cout << "Current Player Health: " << getPlayerHP() + playerInventory.getTotHP() << endl;
 	cout << "Current Player Co-ordinates: [" << yCoord << "][" << xCoord << "]" << endl;
+	cout << "Current Player Gold: " << gold << endl;
 }
 
 /*
@@ -400,9 +402,9 @@ void Player::movePlayer(char Direction)
   {
     case 'n'://Moves the player to the north
     case 'N':
-      if((yCoord+1) < 200-1) //to ensure we are inside the board
+      if(yCoord > 0) //to ensure we are inside the board
 	  { 
-		yCoord++;
+		yCoord--;
       }
 	  else
 	  {
@@ -411,7 +413,7 @@ void Player::movePlayer(char Direction)
     break;
     case 'w': //Moves the player to the west
     case 'W':
-      if((xCoord-1) > 0)
+      if(xCoord > 0)
 	  {
 		xCoord--;
       }
@@ -422,9 +424,9 @@ void Player::movePlayer(char Direction)
     break;
     case 's': //Moves the player to the south
     case 'S':
-      if((yCoord-1) > 0)
+      if(yCoord < 4)
 	  {
-		yCoord--;
+		yCoord++;
       }
 	  else
 	  {
@@ -433,7 +435,7 @@ void Player::movePlayer(char Direction)
     break;
     case 'e': //Moves the player to the East
     case 'E':
-      if((xCoord+1) < 200-1)
+      if(xCoord < 4)
 	  {
 		xCoord++;
       }
@@ -443,4 +445,8 @@ void Player::movePlayer(char Direction)
       }
     break;
   }
+}
+
+void Player::printInventory() {
+    playerInventory.printInventory();
 }

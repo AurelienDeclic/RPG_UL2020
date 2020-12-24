@@ -30,7 +30,10 @@ class Player
 		void itemPickup(weapon); //Pickup weapon and add to player inventory
 		void itemPickup(shield); //Pickup shield and add to player inventory
 		void itemPickup(ring); //Pickup ring and add to player inventory
-		void itemDrop(); //Drop item from inventory
+		int itemDrop(int,int,armour [],shield [],weapon [],ring []); //Drop item from inventory
+		// temp
+//		void itemDrop(int,int,armour,shield,weapon,ring); //Drop item from inventory
+		//cell_y, cell_x, armour_array, shield_array, weapon_array, ring_array
 		void movePlayer(char direction); //Move player co-ordinates: N,S,E,W
 		void showCurrentStats(); //Shows player current attributes
 		void updateStats(); //Function to update player Stats
@@ -38,6 +41,8 @@ class Player
 		inline int getPlayerHP(){return playerHP;}; //Function to get current player race HP
 		inline int getX(){return xCoord;}; //Function to provide player X co-ordinates
 		inline int getY(){return yCoord;}; //Function to provide player Y co-ordinates.
+		void printInventory();
+        inline inventory getInventory(){return playerInventory;};
   
 	private:
 		Race playerRace; //Player Race

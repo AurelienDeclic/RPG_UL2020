@@ -290,3 +290,8 @@ void Enemy::showCurrentStats()
 	cout << "Current Enemy Strength: " << enemyRace.getStrength() << endl;
 	cout << "Current Enemy Health: " << enemyHP << endl;
 }
+
+void Enemy::setCoordinates(int y, int x) {
+    xCoord = x;
+    yCoord = y;
+}

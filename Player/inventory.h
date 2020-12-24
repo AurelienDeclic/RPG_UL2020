@@ -30,7 +30,7 @@ class inventory{
   void pickup(armour); //depending on the type of object taken
   void pickup(shield);
   void pickup(ring);
-  void drop(); //prompts the player with a choice to chose which item to drop
+  int drop(int,int,armour [],shield [],weapon [],ring []); //prompts the player with a choice to chose which item to drop
   
   void printInventory(); //prints the whole content of the inventory
   void printBonusStats(); //prints the added bonus stats of the inventory (+weight)
