@@ -1,2 +1,2 @@
-rpgmain: rpgmain.cpp player.h player.cpp race.h race.cpp enemy.h enemy.cpp inventory.h inventory.cpp armour.h armour.cpp item.h item.cpp ring.h ring.cpp shield.h shield.cpp weapon.h weapon.cpp board.h board.cpp
-	g++ -Wall -Wconversion -ggdb -std=c++14 -o rpgmain rpgmain.cpp player.cpp race.cpp enemy.cpp inventory.cpp armour.cpp item.cpp ring.cpp shield.cpp weapon.cpp board.cpp
+rpgmain: rpgmain.cpp Player/player.h Player/player.cpp Race/race.h Race/race.cpp Enemy/enemy.h Enemy/enemy.cpp Player/inventory.h Player/inventory.cpp Item/armour.h Item/armour.cpp Item/item.h Item/item.cpp Item/ring.h Item/ring.cpp Item/shield.h Item/shield.cpp Item/weapon.h Item/weapon.cpp Board/board.h Board/board.cpp
+	g++ -Wall -Wconversion -ggdb -std=c++14 -o rpgmain rpgmain.cpp Player/player.cpp Race/race.cpp Enemy/enemy.cpp Player/inventory.cpp Item/armour.cpp Item/item.cpp Item/ring.cpp Item/shield.cpp Item/weapon.cpp Board/board.cpp

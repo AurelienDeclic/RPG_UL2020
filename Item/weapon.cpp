@@ -2,7 +2,7 @@
 #include <time.h>
 #include <iostream>
 
-#include "Item/weapon.h"
+#include "weapon.h"
 
 using namespace std;
 

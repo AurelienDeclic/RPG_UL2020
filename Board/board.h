@@ -8,13 +8,13 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include "race.h"
-#include "inventory.h"
-#include "shield.h"
-#include "weapon.h"
-#include "armour.h"
-#include "ring.h"
-#include "enemy.h"
+#include "../Race/race.h"
+#include "../Player/inventory.h"
+#include "../Item/shield.h"
+#include "../Item/weapon.h"
+#include "../Item/armour.h"
+#include "../Item/ring.h"
+#include "../Enemy/enemy.h"
 
 class board  
 {

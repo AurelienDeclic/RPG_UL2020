@@ -1,6 +1,6 @@
 #include <cstdlib>
 #include <time.h>
-#include "Item/shield.h"
+#include "shield.h"
 
 using namespace std;
 

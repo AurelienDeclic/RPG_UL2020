@@ -1,6 +1,6 @@
 #include <cstdlib>
 #include <iostream>
-#include "Player/inventory.h"
+#include "inventory.h"
 
 
 using namespace std;

@@ -10,7 +10,7 @@
 //Include standard libraries and enemy interface.
 #include <cstdlib>
 #include <iostream>
-#include "Enemy/enemy.h"
+#include "enemy.h"
 
 using namespace std;
 

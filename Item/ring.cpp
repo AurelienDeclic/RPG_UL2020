@@ -2,7 +2,7 @@
 #include <time.h>
 #include <iostream>
 
-#include "Item/ring.h"
+#include "ring.h"
 
 using namespace std;
 

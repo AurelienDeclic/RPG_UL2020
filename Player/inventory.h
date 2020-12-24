@@ -1,11 +1,11 @@
 #ifndef inventory_h
 #define inventory_h
 
-#include "Item/item.h"
-#include "Item/shield.h"
-#include "Item/weapon.h"
-#include "Item/armour.h"
-#include "Item/ring.h"
+#include "../Item/item.h"
+#include "../Item/shield.h"
+#include "../Item/weapon.h"
+#include "../Item/armour.h"
+#include "../Item/ring.h"
 
 ////////////////////////////////////////////////////////////////////////
 //class name: inventory

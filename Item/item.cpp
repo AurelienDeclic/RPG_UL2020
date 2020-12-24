@@ -1,6 +1,6 @@
 #include <cstdlib>
 #include <iostream>
-#include "Item/item.h"
+#include "item.h"
 
 using namespace std;
 /////////////////////////////////////////////////////////////////////

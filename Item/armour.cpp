@@ -1,7 +1,7 @@
 #include <cstdlib>
 #include <time.h>
 #include <iostream>
-#include "Item/armour.h"
+#include "armour.h"
 
 using namespace std;
 

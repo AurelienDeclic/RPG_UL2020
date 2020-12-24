@@ -11,7 +11,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
-#include "Race/race.h"
+#include "race.h"
 
 using namespace std;
 
