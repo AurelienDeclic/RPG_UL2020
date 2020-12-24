@@ -223,7 +223,7 @@ void Player::defence(int &damage, bool isNight)
 			{
 				cout << "Player Defence successful" << endl;
 				cout << "However, Player damage taken " << damageTaken/4 << endl;
-				playerHP = playerHP - (damageTaken)/4;
+				playerHP = playerHP - (damageTaken/4);
 			}
 			else
 			{
@@ -258,7 +258,7 @@ void Player::itemPickup(armour eqArmour)
 	//Logic to check if similar inventory is picked prior and if strength > eq weight
 	if(((playerInventory.getArmor()).getString())=="NONE")
 	{
-		if(getPlayerSTR() >= eqArmour.getWeight())
+		if((getPlayerSTR() - playerInventory.getTotWeight()) >= eqArmour.getWeight())
 		{
 			playerInventory.pickup(eqArmour);
 			updateStats();
@@ -285,7 +285,7 @@ void Player::itemPickup(weapon eqWeapon)
 	//Logic to check if similar inventory is picked prior and if strength > eq weight
 	if(((playerInventory.getWeapon()).getString())=="NONE")
 	{
-		if(getPlayerSTR() >= eqWeapon.getWeight())
+		if((getPlayerSTR() - playerInventory.getTotWeight()) >= eqWeapon.getWeight())
 		{
 			playerInventory.pickup(eqWeapon);
 			updateStats();
@@ -312,7 +312,7 @@ void Player::itemPickup(shield eqShield)
 	//Logic to check if similar inventory is picked prior and if strength > eq weight
 	if(((playerInventory.getShield()).getString())=="NONE")
 	{
-		if(getPlayerSTR() >= eqShield.getWeight())
+		if((getPlayerSTR() - playerInventory.getTotWeight()) >= eqShield.getWeight())
 		{
 			playerInventory.pickup(eqShield);
 			updateStats();
@@ -337,7 +337,7 @@ void Player::itemPickup(shield eqShield)
 void Player::itemPickup(ring eqRing)
 {
 	//Logic to check if player strength > ring weight
-	if(getPlayerSTR() >= eqRing.getWeight())
+	if((getPlayerSTR() - playerInventory.getTotWeight()) >= eqRing.getWeight())
 	{
 		playerInventory.pickup(eqRing);
 		updateStats();

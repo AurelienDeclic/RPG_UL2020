@@ -28,7 +28,7 @@ class Enemy
 	private:
 		Race enemyRace; //Enemy Race
 		int damageTaken; //DamageTaken by enemy
-		//int enemyHP;
+		int enemyHP;
 };
 
 #endif
