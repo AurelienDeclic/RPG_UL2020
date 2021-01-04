@@ -24,17 +24,16 @@ class Enemy
 		int getDefenceValue(); //Function to get enemy defence value which gets added to player gold.
 		void alterStats(bool isNight); //Function to alter enemy race stats based on time of the day.
 		void showCurrentStats(); //Displays enemy current attributes
-		// co-ordinate functions
-		void setCoordinates(int,int);
-        inline int getXCoordinates(){ return xCoord;};
-        inline int getYCoordinates(){return yCoord;};
+		void setCoordinates(int,int); // Set co-ordinates of enemy
+        inline int getXCoordinates(){ return xCoord;}; //Get X co-ordinate of enemy
+        inline int getYCoordinates(){return yCoord;}; //Get Y co-ordinate of enemy
 
 	private:
 		Race enemyRace; //Enemy Race
 		int damageTaken; //DamageTaken by enemy
-		int enemyHP;
-		int xCoord;
-		int yCoord;
+		int enemyHP; //Enemy health
+		int xCoord; //X-co-ordinate
+		int yCoord; //Y-co-ordinate
 };
 
 #endif

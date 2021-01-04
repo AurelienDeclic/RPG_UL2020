@@ -43,45 +43,8 @@ int Console::requestBoardDimensions() {
 }
 
 void Console::renderConsoleInterface() {
-    string player = "Human Harry";
-//    int Health = 80;
-//    int Bag = 80;
-//    int Attack = 80;
-//    int Defence = 80;
 
-    //accept input
-
-    cout << "You: Human Harry [Health: 80 | Bag: 25 of 70 | Attack: 45 | Defence: 40]" << endl;
-    cout << "Current Position: 10,22                                      Time: Night" << endl;
-    cout << "" << endl;
-    cout << "A wild Aurelien appeared!" << endl;
-    cout << "" << endl;
-    cout << "Commands: Move [(N)orth (S)outh (E)ast (W)est]" << endl;
-    cout << "Or: (A)ttack | (P)ick | (D)rop | (L)ook | (I)nventory | E(X)it" << endl;
-}
-
-void Console::renderConsoleWithEmojis() {
-    string player = "Human Harry";
-    int Health = 80;
-    int Bag = 80;
-    int Attack = 80;
-    int Defence = 80;
-
-    setlocale(LC_ALL, "en_US.utf8");
-
-    string heart = u8"\U00002665";
-//    string bag = u8"\U0001F4B0";
-    string bag = "\xF0\x9F\x92\xB0";
-    string sword = u8"\U00002694";
-    string shield = u8"\U0001F6E1";
-    string sun = u8"\U00002600";
-    string moon = u8"\U0001F319";
-
-    cout << "You: Human Harry [" << heart  << ": " << Health << " | " << bag  << ": " << Bag << " of 70 | " << sword  << ": " << Attack << " | " << shield  << ": " << Defence << "]" << endl;
-    cout << "Current Position: 10,22                                      Time: " << moon << endl;
-    cout << "" << endl;
-    cout << "A wild Aurelien appeared!" << endl;
-    cout << "" << endl;
-    cout << "Commands: Move [(N)orth (S)outh (E)ast (W)est]" << endl;
-    cout << "Or: (A)ttack | (P)ick | (D)rop | (L)ook | (I)nventory | E(X)it" << endl;
+    cout <<"Please choose direction: N,S,E,W or" << endl;
+    cout << "Choose one of the options: " << endl;
+    cout << "(A) Attack, (P) Pickup, (D) Drop, (L) Look, (I) Inventory, (X)Exit" << endl;
 }

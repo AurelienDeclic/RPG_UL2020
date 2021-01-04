@@ -18,7 +18,7 @@
 class Player  
 {
 	public:
-		void initialiseAttributes(int input); //Based on input initialise player character attributes
+		void initialiseAttributes(int input, int dim); //Based on input initialise player character attributes
 		void showInitAttributes(); //Show player initial attributes 
 		inline void GoldAdd(int GoldAddNum){gold+=GoldAddNum;}; //Adding gold to player 
 		int attack(bool isNight); //Player attack function
@@ -31,9 +31,6 @@ class Player
 		void itemPickup(shield); //Pickup shield and add to player inventory
 		void itemPickup(ring); //Pickup ring and add to player inventory
 		int itemDrop(int,int,armour [],shield [],weapon [],ring []); //Drop item from inventory
-		// temp
-//		void itemDrop(int,int,armour,shield,weapon,ring); //Drop item from inventory
-		//cell_y, cell_x, armour_array, shield_array, weapon_array, ring_array
 		void movePlayer(char direction); //Move player co-ordinates: N,S,E,W
 		void showCurrentStats(); //Shows player current attributes
 		void updateStats(); //Function to update player Stats
@@ -41,8 +38,8 @@ class Player
 		inline int getPlayerHP(){return playerHP;}; //Function to get current player race HP
 		inline int getX(){return xCoord;}; //Function to provide player X co-ordinates
 		inline int getY(){return yCoord;}; //Function to provide player Y co-ordinates.
-		void printInventory();
-        inline inventory getInventory(){return playerInventory;};
+		void printInventory(); //Printing player inventory
+        //inline inventory getInventory(){return playerInventory;}; //Return inventory object.
   
 	private:
 		Race playerRace; //Player Race
@@ -53,6 +50,7 @@ class Player
 		int damageTaken; //DamageTaken by player
 		int xCoord; // Player X coordinate, initialized in the center of the board from Xcoord to BoardSize-1
 		int yCoord; // Player Y coordinate, same as above
+		int dimensions; // board dimensions
 };
 
 #endif

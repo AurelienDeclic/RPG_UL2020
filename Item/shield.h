@@ -1,3 +1,11 @@
+/**********************************************************
+ * shield.h 
+ * Interface for the Shield class
+ * c++ programming language.
+ * date created:	18.12.2020
+ * date last-modified:	22.12.2020
+ **********************************************************/
+
 #ifndef shield_h
 #define shield_h
 

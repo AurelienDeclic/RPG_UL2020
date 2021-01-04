@@ -1,3 +1,11 @@
+/**********************************************************
+ * weapon.h 
+ * Interface for the Weapon class
+ * c++ programming language.
+ * date created:	18.12.2020
+ * date last-modified:	22.12.2020
+ **********************************************************/
+
 #ifndef weapon_h
 #define weapon_h
 

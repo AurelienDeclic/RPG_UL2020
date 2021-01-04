@@ -1,6 +1,15 @@
+/**********************************************************
+ * inventory.h 
+ * Interface for the Inventory class
+ * c++ programming language.
+ * date created:	18.12.2020
+ * date last-modified:	22.12.2020
+ **********************************************************/
+
 #ifndef inventory_h
 #define inventory_h
 
+//Including interface of other classes since it will be used in inventory class
 #include "../Item/item.h"
 #include "../Item/shield.h"
 #include "../Item/weapon.h"

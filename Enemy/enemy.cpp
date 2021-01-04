@@ -291,6 +291,12 @@ void Enemy::showCurrentStats()
 	cout << "Current Enemy Health: " << enemyHP << endl;
 }
 
+/*
+ * Method name: setCoordinates
+ * Description: Method to set enemey co-ordinates.	
+ * Parameters: Y and X co-ordinates
+ * Return: None
+ */
 void Enemy::setCoordinates(int y, int x) {
     xCoord = x;
     yCoord = y;

@@ -1,3 +1,11 @@
+/**********************************************************
+ * item.h 
+ * Interface for the Item class
+ * c++ programming language.
+ * date created:	18.12.2020
+ * date last-modified:	22.12.2020
+ **********************************************************/
+
 #ifndef item_h
 #define item_h
 

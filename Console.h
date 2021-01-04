@@ -15,8 +15,6 @@ public:
     int requestCharacterSelection();
     int requestBoardDimensions();
     void renderConsoleInterface();
-    void renderConsoleWithEmojis();
-
 };
 
 

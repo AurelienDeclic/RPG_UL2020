@@ -1,3 +1,13 @@
+/**********************************************************
+ * inventory.cpp 
+ * Implementation of the Inventory class.
+ * Contains all methods associated with the class.
+ * c++ programming language.
+ * date created:	18.12.2020
+ * date last-modified:	22.12.2020
+ **********************************************************/
+
+//include standard libraries and inventory interface.
 #include <cstdlib>
 #include <iostream>
 #include "inventory.h"

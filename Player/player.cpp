@@ -18,10 +18,10 @@ using namespace std;
 /*
  * Method name: initialiseAttributes
  * Description: Method to initialse player race attributes.	
- * Parameters: input which is of type integer provided in the console
+ * Parameters: input which is of type integer provided in the console and board dimensions
  * Return: None
  */
-void Player::initialiseAttributes(int input)
+void Player::initialiseAttributes(int input, int dim)
 {
 	gold=0; //Initial value set to zero
 	playerRace.setAttributes(input); //Setting race attributes
@@ -29,6 +29,7 @@ void Player::initialiseAttributes(int input)
 	playerHP=playerRace.getHealth(); //Initialising player health to race health
 	xCoord = 0; //sets starting coordinates at the middle of the board
     yCoord = 0; //sets starting coordinates at the middle of the board
+    dimensions = dim;
 }
 
 /*
@@ -351,7 +352,7 @@ void Player::itemPickup(ring eqRing)
 /*
  * Method name: itemDrop
  * Description: Method to drop item on the board.	
- * Parameters: 
+ * Parameters: Y, X, Armour, Shield, Weapon, Ring.
  * Return: None
  */
 int Player::itemDrop(int y, int x, armour armour_arr[],shield shield_arr[],weapon weapon_arr[],ring ring_arr[]) {
@@ -424,7 +425,7 @@ void Player::movePlayer(char Direction)
     break;
     case 's': //Moves the player to the south
     case 'S':
-      if(yCoord < 4)
+      if(yCoord < (dimensions-1))
 	  {
 		yCoord++;
       }
@@ -435,7 +436,7 @@ void Player::movePlayer(char Direction)
     break;
     case 'e': //Moves the player to the East
     case 'E':
-      if(xCoord < 4)
+      if(xCoord < (dimensions-1))
 	  {
 		xCoord++;
       }
@@ -447,6 +448,12 @@ void Player::movePlayer(char Direction)
   }
 }
 
+/*
+ *Method name: printInventory
+ *Description: Print player inventory
+ *Parameters:None
+ *Return: None
+ */
 void Player::printInventory() {
     playerInventory.printInventory();
 }

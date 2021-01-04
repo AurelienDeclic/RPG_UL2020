@@ -1,3 +1,11 @@
+/**********************************************************
+ * armour.h 
+ * Interface for the Armour class
+ * c++ programming language.
+ * date created:	18.12.2020
+ * date last-modified:	22.12.2020
+ **********************************************************/
+
 #ifndef armour_h
 #define armour_h
 

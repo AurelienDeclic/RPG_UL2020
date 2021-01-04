@@ -1,3 +1,12 @@
+/**********************************************************
+ * ring.cpp 
+ * Implementation of the Ring class.
+ * Contains all methods associated with the class.
+ * c++ programming language.
+ * date created:	18.12.2020
+ * date last-modified:	22.12.2020
+ **********************************************************/
+
 #include <cstdlib>
 #include <time.h>
 #include <iostream>
